@@ -62,7 +62,7 @@ var definition = "word"
 
 ud.search(definition, function (entries, tags, sounds) {
   if (!entry) {
-    console.log(word + ' is not defined.')
+    console.log(definition + ' is not defined.')
   } else {
     console.log(entries[0].word)
     console.log(entries[0].definition)
