@@ -61,7 +61,7 @@ const ud = require('./UrbanDictionaryNode')
 var definition = "word"
 
 ud.search(definition, function (entries, tags, sounds) {
-  if (!entry) {
+  if (!entries) {
     console.log(definition + ' is not defined.')
   } else {
     console.log(entries[0].word)
