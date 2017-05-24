@@ -24,7 +24,7 @@ Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 de
 *Arguments*
 
 * `callback` **{Function}**
-    * `entry` **{Array of Definition Object}**
+    * `entry` **{Definition Object}**
 
 E.g
 
@@ -49,7 +49,7 @@ Use this to manually retrieve an already existing definition.
 
 * `definition` **{String}** The definition to search for.
 * `callback` **{Function}**
-    * `entries` **{Array of Definition Objects}**
+    * `entries` **{Array of Definition Object}**
     * `tags` **{Array of String}** Tags of related words.
     * `sounds` **{Array of String}** Full link addresses to `.mp3` and `.wav` files.
 
