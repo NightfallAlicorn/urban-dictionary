@@ -47,7 +47,7 @@ ud.defid(id, function (entry, tags, sounds) {
 ```
 
 ### random
-Use this to obtain a random definiation.
+Use this to obtain a random definition.
 
 Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 definitions at once. This action will store all 10 in a cache on first use and provide them 1 at a time on each use. Each entry that gets provided gets removed from the cache. Once all the entries have been provided, it will retrieve another 10 once the cache is empty. Until all the entries have been provided, all the definitions that are currently stored in the cache are provided first.
 
