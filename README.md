@@ -1,7 +1,7 @@
 # urban-dictionary-node
 [![build](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](#contributing)
+[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](contributing)
 [![dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)]()
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![status](https://img.shields.io/badge/status-stable-brightgreen.svg)]()
