@@ -9,12 +9,42 @@
 Badges from [Shields.io](http://shields.io)
 
 * [Actions](#actions)
+    * [defid](#defid)
     * [random](#random)
-    * [search](#search)
+    * [term](#search)
 * [FAQ](#faq)
 * [Object Dictionary](#object-dictionary)
 
 ## Actions
+
+### defid
+If you know the `defid` of the term. You can use this to just retrieve the Definition Object of that entry only.
+
+*Arguments*
+
+* `id` **{Number}** The `defid` to retrieve.
+* `callback` **{Function}**
+    * `entry` **{Definition Object}**
+    * `tags` **{Array of String}** Tags of related words.
+    * `sounds` **{Array of String}** Full link addresses to `.mp3` and `.wav` files.
+
+E.g
+
+```javascript
+const ud = require('./UrbanDictionaryNode')
+
+var id = 2488552
+
+ud.defid(id, function (entry, tags, sounds) {
+  if (!entries) {
+    console.log(id + ' is not defined or had been deleted.')
+  } else {
+    console.log(entry[0].word)
+    console.log(entry[0].definition)
+    console.log(entry[0].example)
+  }
+})
+```
 
 ### random
 Use this to obtain a random definiation.
@@ -42,7 +72,7 @@ ud.random(function (entry) {
 })
 ```
 
-### search
+### term
 Use this to manually retrieve an already existing definition.
 
 *Arguments*
@@ -60,7 +90,7 @@ const ud = require('./UrbanDictionaryNode')
 
 var definition = "word"
 
-ud.search(definition, function (entries, tags, sounds) {
+ud.term(definition, function (entries, tags, sounds) {
   if (!entries) {
     console.log(definition + ' is not defined.')
   } else {
