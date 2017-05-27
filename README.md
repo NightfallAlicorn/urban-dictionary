@@ -36,12 +36,12 @@ const ud = require('./UrbanDictionaryNode')
 var id = 2488552
 
 ud.defid(id, function (entry, tags, sounds) {
-  if (!entries) {
+  if (!entry) {
     console.log(id + ' is not defined or had been deleted.')
   } else {
-    console.log(entry[0].word)
-    console.log(entry[0].definition)
-    console.log(entry[0].example)
+    console.log(entry.word)
+    console.log(entry.definition)
+    console.log(entry.example)
   }
 })
 ```
