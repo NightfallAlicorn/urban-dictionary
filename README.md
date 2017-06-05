@@ -31,7 +31,7 @@ If you know the `defid` of the term. You can use this to just retrieve the Defin
 E.g
 
 ```javascript
-const ud = require('./UrbanDictionaryNode')
+const ud = require('./urban-dictionary-node')
 
 var id = 2488552
 
@@ -59,11 +59,11 @@ Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 de
 E.g
 
 ```javascript
-const ud = require('./UrbanDictionaryNode')
+const ud = require('./urban-dictionary-node')
 
 ud.random(function (entry) {
   if (!entry) {
-    console.log('Unable to rearch urbandictionary.com for more definitions.')
+    console.log('Unable to reach urbandictionary.com for more definitions.')
   } else {
     console.log(entry.word)
     console.log(entry.definition)
@@ -86,7 +86,7 @@ Use this to manually retrieve an already existing definition.
 E.g
 
 ```javascript
-const ud = require('./UrbanDictionaryNode')
+const ud = require('./urban-dictionary-node')
 
 var definition = "word"
 
