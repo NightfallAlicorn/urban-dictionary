@@ -113,6 +113,8 @@ ud.term(definition, function (entries, tags, sounds) {
         * `http://api.urbandictionary.com/v0/random`
 * Q: If they haven't documented it. Are we even allowed to use their site API?
     * A: I don't really know the answer. However, sites nowadays use an authorization name and password in the URL queries to restrict their API access to certain individuals. If Urban Dictionary didn't want others using it, they would had done so by now. In short: As long as we don't abuse the API to spam requests, we should be fine.
+* Q: Why use standardjs coding style?
+    * There are many different coding rules of JavaScript being used today. Since this standard is being used by many packages and is becoming common on github. I've decided to start using it myself and quickly started to like it. It saves time by not having to worry which rules to follow or finding ways around strict styles such as JSLint.
 
 ## Object Dictionary
 
