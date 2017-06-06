@@ -8,6 +8,8 @@
 
 Badges from [Shields.io](http://shields.io)
 
+To use this module. Simply download the latest zip from the [Releases](https://github.com/NightfallAlicorn/urban-dictionary-node/releases) page. Then extract the `urban-dictionary-node.js` file and place it into your Node.js project directory. Read below to see the available actions with examples on how to use it.
+
 * [Actions](#actions)
     * [defid](#defid)
     * [random](#random)
