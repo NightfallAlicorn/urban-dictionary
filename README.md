@@ -124,12 +124,12 @@ ud.term(definition, function (error, entries, tags, sounds) {
 
 ### Definition Object
 
-    * `author` **{String}** Name of the poster.
-    * `current_vote` **{String}** Unknown. It only returns an empty string.
-    * `defid` **{Number}** The unique definition entry ID.
-    * `definition` **{String}** The definition description.
-    * `example` **{String}** An example use of the definition.
-    * `permalink` **{String}** A shortened link to Urban Dictionary page of the definition.
-    * `thumbs_down` **{Number}** Number of down votes.
-    * `thumbs_up` **{Number}** Number of up votes.
-    * `word` **{String}** The word of the definition. Be aware that the casing might be different.
+* `author` **{String}** Name of the poster.
+* `current_vote` **{String}** Unknown. It only returns an empty string.
+* `defid` **{Number}** The unique definition entry ID.
+* `definition` **{String}** The definition description.
+* `example` **{String}** An example use of the definition.
+* `permalink` **{String}** A shortened link to Urban Dictionary page of the definition.
+* `thumbs_down` **{Number}** Number of down votes.
+* `thumbs_up` **{Number}** Number of up votes.
+* `word` **{String}** The word of the definition. Be aware that the casing might be different.
