@@ -4,7 +4,7 @@ const ud = require('./urban-dictionary')
 
 ud.random(function (error, entry) {
   if (error) {
-    console.error(error)
+    console.error(error.message)
     return
   }
   console.log('Urban Dictionary - Random Definition')
