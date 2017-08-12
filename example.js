@@ -1,6 +1,6 @@
 'use strict'
 
-const ud = require('./urban-dictionary')
+const ud = require('urban-dictionary')
 
 ud.random(function (error, entry) {
   if (error) {
