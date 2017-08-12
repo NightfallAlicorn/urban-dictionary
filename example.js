@@ -1,6 +1,7 @@
 'use strict'
 
-const ud = require('urban-dictionary')
+// The example script requires the module script to be in the same directory when run.
+const ud = require('./urban-dictionary')
 
 ud.random(function (error, entry) {
   if (error) {

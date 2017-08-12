@@ -4,12 +4,36 @@
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)]()
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![release](https://img.shields.io/badge/release-v0.1.0-blue.svg)]()
+[![npm](https://img.shields.io/badge/npm-v1.0.2-blue.svg)](www.npmjs.com/package/urban-dictionary)
 [![status](https://img.shields.io/badge/status-stable-brightgreen.svg)]()
 
 Badges from [Shields.io](http://shields.io)
 
-To use this module. Simply download the latest zip from the [Releases](https://github.com/NightfallAlicorn/urban-dictionary/releases) page. Then extract the `urban-dictionary.js` file and place it into your Node.js project directory. Read below to see the available actions with examples on how to use it.
+---
+
+**Installing by zip**
+
+Simply download the latest zip from the [Releases](https://github.com/NightfallAlicorn/urban-dictionary/releases) page. Then extract the `urban-dictionary.js` file and place it into your Node.js project directory. Read below to see the available actions with examples on how to use it.
+
+---
+
+**Installing by npm**
+
+Install Node.js with the NPM extra component. This is included by default during a default install. Then open you're command terminal and use one of the following. Local is for the current project folder. Global will install and work on all your projects that require the module.
+
+Local Install: `npm install urban-dictionary`
+
+Global Install `npm install urban-dictionary -g`
+
+**Uninstalling by npm**
+
+Local Uninstall `npm uninstall urban-dictionary`
+
+Global Uninstall `npm uninstall urban-dictionary -g`
+
+Note that you got to be in the root of your project folder to local uninstall.
+
+---
 
 * [Actions](#actions)
     * [defid](#defid)
