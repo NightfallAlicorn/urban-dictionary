@@ -13,7 +13,7 @@ function get (url, callback) {
     let error
     if (statusCode !== 200) {
       error = new Error('Unable to send request for definitions. Status code: ' + statusCode)
-    } else if ('application/json'.indexOf(contentType) > -1) {
+    } else if (contentType.indexOf('application/json') === -1) {
       error = new Error("Content retrieved isn't JSON. Content type: '" + contentType + "'")
     }
 
