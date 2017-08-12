@@ -1,0 +1,3 @@
+# exclude development folders from npm packages
+.git/
+.vscode/
