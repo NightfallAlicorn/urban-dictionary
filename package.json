@@ -1,0 +1,26 @@
+{
+  "name": "urban-dictionary",
+  "version": "1.0.0",
+  "description": "Simple Node.js module that provides easy methods of obtaining urbandictionary.com definitions.",
+  "main": "urban-dictionary.js",
+  "scripts": {
+    "test": "node example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NightfallAlicorn/urban-dictionary.git"
+  },
+  "keywords": [
+    "urban",
+    "dictionary",
+    "node",
+    "node.js",
+    "nightfallalicorn"
+  ],
+  "author": "NightfallAlicorn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NightfallAlicorn/urban-dictionary/issues"
+  },
+  "homepage": "https://github.com/NightfallAlicorn/urban-dictionary#readme"
+}

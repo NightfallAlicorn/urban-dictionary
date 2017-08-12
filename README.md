@@ -26,6 +26,7 @@ If you know the `defid` of the term. You can use this to just retrieve the Defin
 
 * `id` **{Number}** The `defid` to retrieve.
 * `callback` **{Function}**
+    * `error` **{Error}** if there's an error else **{null}**
     * `entry` **{Definition Object}**
     * `tags` **{Array of String}** Tags of related words.
     * `sounds` **{Array of String}** Full link addresses to `.mp3` and `.wav` files.
@@ -33,12 +34,12 @@ If you know the `defid` of the term. You can use this to just retrieve the Defin
 E.g
 
 ```javascript
-const ud = require('./urban-dictionary-node')
+const ud = require('./urban-dictionary')
 
 var id = 2488552
 
-ud.defid(id, function (entry, tags, sounds) {
-  if (!entry) {
+ud.defid(id, function (error, entry, tags, sounds) {
+  if (error) {
     console.log(id + ' is not defined or had been deleted.')
   } else {
     console.log(entry.word)
@@ -56,15 +57,16 @@ Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 de
 *Arguments*
 
 * `callback` **{Function}**
+    * `error` **{Error}** if there's an error else **{null}**
     * `entry` **{Definition Object}**
 
 E.g
 
 ```javascript
-const ud = require('./urban-dictionary-node')
+const ud = require('./urban-dictionary')
 
-ud.random(function (entry) {
-  if (!entry) {
+ud.random(function (error, entry) {
+  if (error) {
     console.log('Unable to reach urbandictionary.com for more definitions.')
   } else {
     console.log(entry.word)
@@ -81,6 +83,7 @@ Use this to manually retrieve an already existing definition.
 
 * `definition` **{String}** The definition to search for.
 * `callback` **{Function}**
+    * `error` **{Error}** if there's an error else **{null}**
     * `entries` **{Array of Definition Object}**
     * `tags` **{Array of String}** Tags of related words.
     * `sounds` **{Array of String}** Full link addresses to `.mp3` and `.wav` files.
@@ -88,12 +91,12 @@ Use this to manually retrieve an already existing definition.
 E.g
 
 ```javascript
-const ud = require('./urban-dictionary-node')
+const ud = require('./urban-dictionary')
 
 var definition = "word"
 
-ud.term(definition, function (entries, tags, sounds) {
-  if (!entries) {
+ud.term(definition, function (error, entries, tags, sounds) {
+  if (error) {
     console.log(definition + ' is not defined.')
   } else {
     console.log(entries[0].word)
@@ -114,7 +117,7 @@ ud.term(definition, function (entries, tags, sounds) {
 * Q: If they haven't documented it. Are we even allowed to use their site API?
     * A: I don't really know the answer. However, sites nowadays use an authorization name and password in the URL queries to restrict their API access to certain individuals. If Urban Dictionary didn't want others using it, they would had done so by now. In short: As long as we don't abuse the API to spam requests, we should be fine.
 * Q: Why use standardjs coding style?
-    * There are many different coding rules of JavaScript being used today. Since this standard is being used by many packages and is becoming common on github. I've decided to start using it myself and quickly started to like it. It saves time by not having to worry which rules to follow or finding ways around strict styles such as JSLint.
+    * A: There are many different coding rules of JavaScript being used today. Since this standard is being used by many packages and is becoming common on github. I've decided to start using it myself and quickly started to like it. It saves time by not having to worry which rules to follow or finding ways around strict styles such as JSLint.
 
 ## Object Dictionary
 
