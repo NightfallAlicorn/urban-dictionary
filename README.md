@@ -1,14 +1,15 @@
-# urban-dictionary-node
+# urban-dictionary
 [![build](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)]()
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![release](https://img.shields.io/badge/release-v0.1.0-blue.svg)]()
 [![status](https://img.shields.io/badge/status-stable-brightgreen.svg)]()
 
 Badges from [Shields.io](http://shields.io)
 
-To use this module. Simply download the latest zip from the [Releases](https://github.com/NightfallAlicorn/urban-dictionary-node/releases) page. Then extract the `urban-dictionary-node.js` file and place it into your Node.js project directory. Read below to see the available actions with examples on how to use it.
+To use this module. Simply download the latest zip from the [Releases](https://github.com/NightfallAlicorn/urban-dictionary/releases) page. Then extract the `urban-dictionary.js` file and place it into your Node.js project directory. Read below to see the available actions with examples on how to use it.
 
 * [Actions](#actions)
     * [defid](#defid)
@@ -27,7 +28,7 @@ If you know the `defid` of the term. You can use this to just retrieve the Defin
 * `id` **{Number}** The `defid` to retrieve.
 * `callback` **{Function}**
     * `error` **{Error}** if there's an error else **{null}**
-    * `entry` **{Definition Object}**
+    * `entry` **{[Definition Object](#definition-object)}**
     * `tags` **{Array of String}** Tags of related words.
     * `sounds` **{Array of String}** Full link addresses to `.mp3` and `.wav` files.
 
@@ -58,7 +59,7 @@ Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 de
 
 * `callback` **{Function}**
     * `error` **{Error}** if there's an error else **{null}**
-    * `entry` **{Definition Object}**
+    * `entry` **{[Definition Object](#definition-object)}**
 
 E.g
 
@@ -84,7 +85,7 @@ Use this to manually retrieve an already existing definition.
 * `definition` **{String}** The definition to search for.
 * `callback` **{Function}**
     * `error` **{Error}** if there's an error else **{null}**
-    * `entries` **{Array of Definition Object}**
+    * `entries` **{Array of [Definition Object](#definition-object)}**
     * `tags` **{Array of String}** Tags of related words.
     * `sounds` **{Array of String}** Full link addresses to `.mp3` and `.wav` files.
 
@@ -121,7 +122,8 @@ ud.term(definition, function (error, entries, tags, sounds) {
 
 ## Object Dictionary
 
-* **Definition Object**
+### Definition Object
+
     * `author` **{String}** Name of the poster.
     * `current_vote` **{String}** Unknown. It only returns an empty string.
     * `defid` **{Number}** The unique definition entry ID.
