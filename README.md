@@ -41,7 +41,7 @@ var id = 2488552
 
 ud.defid(id, function (error, entry, tags, sounds) {
   if (error) {
-    console.log(id + ' is not defined or had been deleted.')
+    console.error(error.message)
   } else {
     console.log(entry.word)
     console.log(entry.definition)
@@ -68,7 +68,7 @@ const ud = require('./urban-dictionary')
 
 ud.random(function (error, entry) {
   if (error) {
-    console.log('Unable to reach urbandictionary.com for more definitions.')
+    console.error(error.message)
   } else {
     console.log(entry.word)
     console.log(entry.definition)
@@ -98,7 +98,7 @@ var definition = "word"
 
 ud.term(definition, function (error, entries, tags, sounds) {
   if (error) {
-    console.log(definition + ' is not defined.')
+    console.error(error.message)
   } else {
     console.log(entries[0].word)
     console.log(entries[0].definition)
