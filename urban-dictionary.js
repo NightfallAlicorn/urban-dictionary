@@ -31,11 +31,15 @@ function get (url, callback) {
       rawData += buffer
     })
     result.on('end', function () {
+      var data = null
+      var error = null
       try {
-        callback(null, JSON.parse(rawData))
+        data = JSON.parse(rawData)
       } catch (error) {
-        callback(new Error('Failed to parse retrieved Urban Dictionary JSON.'))
+        data = null //incase somehow data got set to not null, this is more of a failsafe.
+        error = new Error('Failed to parse retrieved Urban Dictionary JSON.')
       }
+      callback(error, data)
     })
   })
 }
