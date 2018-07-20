@@ -1,14 +1,46 @@
 'use strict'
 
-// The example script requires the module script to be in the same directory when run.
 const ud = require('./urban-dictionary')
 
-ud.random(function (error, entry) {
+var definition = 'word'
+
+// Random callback example.
+ud.random((error, entry) => {
   if (error) {
     console.error(error.message)
-    return
+  } else {
+    console.log(entry.word)
+    console.log(entry.definition)
+    console.log(entry.example)
   }
-  console.log('Urban Dictionary - Random Definition')
-  console.log('Word: ' + entry.word)
-  console.log('Definition: ' + entry.definition)
+})
+
+// Random promise example.
+ud.random().then((result) => {
+  console.log(result.word)
+  console.log(result.definition)
+  console.log(result.example)
+}).catch((error) => {
+  console.error(error.message)
+})
+
+// Term callback example.
+ud.term(definition, (error, entries, tags, sounds) => {
+  if (error) {
+    console.error(error.message)
+  } else {
+    console.log(entries[0].word)
+    console.log(entries[0].definition)
+    console.log(entries[0].example)
+  }
+})
+
+// Term promise example.
+ud.term(definition).then((result) => {
+  const entries = result.entries
+  console.log(entries[0].word)
+  console.log(entries[0].definition)
+  console.log(entries[0].example)
+}).catch((error) => {
+  console.error(error.message)
 })

@@ -1,20 +1,32 @@
 'use strict'
 
 const http = require('http')
+const querystring = require('querystring')
 
 var methods = {}
 var randomCache = []
 
+/**
+ * Copies an object without it being linked to the original.
+ * @param {object} object
+ * @return {object} Deep copied object.
+ */
+function deepCopy (object) {
+  return JSON.parse(JSON.stringify(object))
+}
+
 function get (url, callback) {
-  http.get(url, function (result) {
+  // https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_http_get_options_callback
+  http.get(url, (result) => {
     const contentType = result.headers['content-type']
     const statusCode = result.statusCode
 
     let error
+
     if (statusCode !== 200) {
-      error = new Error('Unable to send request for definitions. Status code: ' + statusCode)
+      error = new Error(`Unable to send request for definitions. Status code: '${statusCode}'`)
     } else if (contentType.indexOf('application/json') === -1) {
-      error = new Error("Content retrieved isn't JSON. Content type: '" + contentType + "'")
+      error = new Error(`Content retrieved isn't JSON. Content type: '${contentType}'`)
     }
 
     if (error) {
@@ -27,69 +39,133 @@ function get (url, callback) {
     result.setEncoding('utf8')
 
     let rawData = ''
-    result.on('data', function (buffer) {
+
+    result.on('data', (buffer) => {
       rawData += buffer
     })
-    result.on('end', function () {
+
+    result.on('end', () => {
       let data = null
       let error = null
+
       try {
         data = JSON.parse(rawData)
       } catch (unusedError) {
-        data = null // In case somehow data got set to not null, this is more of a failsafe.
+        // In case somehow the data got set to not null. This is more of a failsafe.
+        data = null
         error = new Error('Failed to parse retrieved Urban Dictionary JSON.')
       }
+
       callback(error, data)
     })
   })
 }
 
-methods.defid = function defid (id, callback) {
-  get('http://api.urbandictionary.com/v0/define?defid=' + id, function (error, result) {
-    if (error) {
-      callback(error)
-      return
-    }
+/**
+ * Asynchronously obtain a random definition from Urban Dictionary.
+ *
+ * When called, 10 definitions are downloaded at once and are output 1 at a time.
+ * Once all 10 cache definitions are used, new ones are automatically downloaded.
+ * @param {function(error, object):promise} callback
+ * * argument[0] {error} error
+ * * argument[1] {object} entry
+ * * * 'author' {string} Name of the poster.
+ * * * 'current_vote' {string} Unknown. It only returns an empty string.
+ * * * 'defid' {number} The unique definition entry ID.
+ * * * 'definition' {string} The definition description.
+ * * * 'example' {string} An example use of the definition.
+ * * * 'permalink' {string} A shortened link to Urban Dictionary page of the definition.
+ * * * 'thumbs_down' {number} Number of down votes.
+ * * * 'thumbs_up' {number} Number of up votes.
+ * * * 'word' {string} The word of the definition. Be aware that the casing might be different.
+ * @return {promise} Returns a promise object containing the 'entry' property.
+ */
+methods.random = function random (callback) {
+  return new Promise((resolve, reject) => {
+    if (!randomCache[0]) {
+      get('http://api.urbandictionary.com/v0/random', (error, result) => {
+        if (error) {
+          if (typeof callback === 'function') {
+            callback(error)
+          }
 
-    if (!result || result.result_type !== 'exact') {
-      callback(new Error('No result found.'))
-      return
-    }
+          reject(error)
+          return
+        }
 
-    callback(null, result.list[0], result.tags, result.sounds)
+        randomCache = result.list
+        let entry = deepCopy(randomCache[0])
+        randomCache.splice(0, 1)
+
+        if (typeof callback === 'function') {
+          callback(null, entry)
+        }
+
+        resolve(entry)
+      })
+    } else {
+      let entry = deepCopy(randomCache[0])
+      randomCache.splice(0, 1)
+
+      if (typeof callback === 'function') {
+        callback(null, entry)
+      }
+
+      resolve(entry)
+    }
   })
 }
 
-methods.random = function random (callback) {
-  if (!randomCache[0]) {
-    get('http://api.urbandictionary.com/v0/random', function (error, result) {
+/**
+ * Asynchronously obtain Urban Dictionary by term.
+ * @param {string} word Definition to search for.
+ * @param {function(error, array, array, array):promise} callback
+ * * argument[0] {error} error
+ * * argument[1] {array of object} entries
+ * * * 'author' {string} Name of the poster.
+ * * * 'current_vote' {string} Unknown. It only returns an empty string.
+ * * * 'defid' {number} The unique definition entry ID.
+ * * * 'definition' {string} The definition description.
+ * * * 'example' {string} An example use of the definition.
+ * * * 'permalink' {string} A shortened link to Urban Dictionary page of the definition.
+ * * * 'thumbs_down' {number} Number of down votes.
+ * * * 'thumbs_up' {number} Number of up votes.
+ * * * 'word' {string} The word of the definition. Be aware that the casing might be different.
+ * * argument[2] {array of string} tags Tags of related words.
+ * * argument[3] {array of string} sounds Full link addresses to .mp3 and .wav files.
+ * @return {promise} Returns a promise object containing entries, tags and sounds properties.
+ */
+methods.term = function term (word, callback) {
+  return new Promise((resolve, reject) => {
+    const query = querystring.stringify({'term': word})
+
+    get('http://api.urbandictionary.com/v0/define?' + query, (error, result) => {
       if (error) {
-        callback(error)
+        if (typeof callback === 'function') {
+          callback(error)
+        }
+
+        reject(error)
         return
       }
-      randomCache = result.list
-      callback(null, randomCache[0])
-      randomCache.splice(0, 1)
+
+      if (!result.list[0]) {
+        let error = new Error(word + ' is undefined.')
+
+        if (typeof callback === 'function') {
+          callback(error)
+        }
+
+        reject(error)
+        return
+      }
+
+      if (typeof callback === 'function') {
+        callback(null, result.list, result.tags, result.sounds)
+      }
+
+      resolve({'entries': result.list, 'tags': result.tags, 'sounds': result.sounds})
     })
-  } else {
-    callback(null, randomCache[0])
-    randomCache.splice(0, 1)
-  }
-}
-
-methods.term = function term (word, callback) {
-  get('http://api.urbandictionary.com/v0/define?term=' + encodeURIComponent(word), function (error, result) {
-    if (error) {
-      callback(error)
-      return
-    }
-
-    if (!result || result.result_type !== 'exact') {
-      callback(new Error(word + ' is undefined.'))
-      return
-    }
-
-    callback(null, result.list, result.tags, result.sounds)
   })
 }
 
