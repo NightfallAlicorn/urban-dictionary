@@ -12,30 +12,27 @@ Badges from: [standard JS](https://standardjs.com), [NodeICO](https://nodei.co) 
 
 ---
 
-**Installing by zip**
+## Installing
 
-Simply download the latest zip from the [Releases](https://github.com/NightfallAlicorn/urban-dictionary/releases) page. Then extract the `urban-dictionary.js` file and place it into your Node.js project directory. Read below to see the available actions with examples on how to use it.
+### Via NPM (Recommended)
 
----
-
-**Installing by npm**
-
-Install Node.js with the NPM extra component. This is included by default during a default install. Then open you're command terminal and use one of the following. Local is for the current project folder. Global will install and work on all your projects that require the module.
+Install Node.js with the NPM extra component. This is included by default during a default install. Then open your command terminal and use one of the following. Local is for the current project folder. Global will install and work on all your projects that require the module.
 
 Local Install: `npm install urban-dictionary`
 
 Global Install `npm install urban-dictionary -g`
 
-**Uninstalling by npm**
-
 Local Uninstall `npm uninstall urban-dictionary`
 
 Global Uninstall `npm uninstall urban-dictionary -g`
 
-Note that you got to be in the root of your project folder to local uninstall.
+### Via Downloadable Zip
+
+Download the latest release from [GitHub](https://github.com/NightfallAlicorn/urban-dictionary/releases) and extract the urban-dictionary.js into your project folder. Beware that you have got to require('./urban-dictionary') with ./ prefix for local directory when you install by zip.
 
 ---
 
+* [Installing](#installing)
 * [Actions](#actions)
     * [random](#random)
     * [term](#term)
