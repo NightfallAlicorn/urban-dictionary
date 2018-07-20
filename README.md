@@ -96,7 +96,7 @@ Use this to manually retrieve an already existing definition.
 
 * `definition` **String** The definition to search for.
 * `callback` **Function**
-    * `error` **Error** if there's an error else **{null}**
+    * `error` **Error** if there's an error else **null**
     * `entries` **Array of [Definition Object](#definition-object)**
     * `tags` **Array of String** Tags of related words.
     * `sounds` **Array of String** Full link addresses to `.mp3` and `.wav` files.
