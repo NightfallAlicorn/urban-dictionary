@@ -8,7 +8,7 @@
 [![NPM](https://nodei.co/npm/urban-dictionary.png)](https://npmjs.org/package/urban-dictionary)
 
 
-Badges from: [standard JS](https://standardjs.com), [NodeICO](https://nodei.co) and [Shields IO](http://shields.io)
+Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
 ---
 
@@ -16,7 +16,7 @@ Badges from: [standard JS](https://standardjs.com), [NodeICO](https://nodei.co) 
 
 ### Via NPM (Recommended)
 
-Install Node.js with the NPM extra component. This is included by default during a default install. Then open your command terminal and use one of the following. Local is for the current project folder. Global will install and work on all your projects that require the module.
+Install Node.js with the NPM extra component. This is included by default during a default install on Windows. Then open your command terminal and use one of the following. Local is for the current project folder. Global will install and work on all your projects that require the module.
 
 Local Install: `npm install urban-dictionary`
 
@@ -28,7 +28,7 @@ Global Uninstall `npm uninstall urban-dictionary -g`
 
 ### Via Downloadable Zip
 
-Download the latest release from [GitHub](https://github.com/NightfallAlicorn/urban-dictionary/releases) and extract the urban-dictionary.js into your project folder. Beware that you have got to require('./urban-dictionary') with ./ prefix for local directory when you install by zip.
+Download the latest release from [GitHub](https://github.com/NightfallAlicorn/urban-dictionary/releases) and extract the urban-dictionary.js into your project folder. Beware that you have got to `require('./urban-dictionary')` with the `./` prefix for local directory when you install by zip.
 
 ---
 
@@ -49,7 +49,7 @@ Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 de
 *Arguments*
 
 * `callback` **Function**
-    * `error` **Error** if there's an error else **null**
+    * `error` **Error** If there's an error else **null**.
     * `entry` **[Definition Object](#definition-object)**
 
 *Return*
@@ -58,7 +58,7 @@ Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 de
     * `then` **[Definition Object](#definition-object)**
     * `catch` **Error**
 
-E.g
+E.g.
 
 ```javascript
 'use strict'
@@ -87,13 +87,13 @@ ud.random().then((result) => {
 ```
 
 ### term
-Use this to manually retrieve an already existing definition.
+Use this to retrieve a specific definition.
 
 *Arguments*
 
 * `definition` **String** The definition to search for.
 * `callback` **Function**
-    * `error` **Error** if there's an error else **null**
+    * `error` **Error** If there's an error else **null**.
     * `entries` **Array of [Definition Object](#definition-object)**
     * `tags` **Array of String** Tags of related words.
     * `sounds` **Array of String** Full link addresses to `.mp3` and `.wav` files.
@@ -107,7 +107,7 @@ Use this to manually retrieve an already existing definition.
       * `sounds` **Array of String** Full link addresses to `.mp3` and `.wav` files.
     * `catch` **Error**
 
-E.g
+E.g.
 
 ```javascript
 'use strict'
