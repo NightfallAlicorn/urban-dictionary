@@ -34,12 +34,59 @@ Download the latest release from [GitHub](https://github.com/NightfallAlicorn/ur
 
 * [Installing](#installing)
 * [Actions](#actions)
+    * [defid](#defid)
     * [random](#random)
     * [term](#term)
 * [FAQ](#faq)
 * [Object Dictionary](#object-dictionary)
 
 ## Actions
+
+### defid
+Use this to retrieve a specific definition entry by defid.
+
+*Arguments*
+
+* `id` **id** The definition entry to retrieve.
+* `callback` **Function**
+    * `error` **Error** If there's an error else **null**.
+    * `entry` **[Definition Object](#definition-object)**
+
+*Return*
+
+* `return` **Promise**
+    * `then` **[Definition Object](#definition-object)**
+    * `catch` **Error**
+
+E.g.
+
+```javascript
+'use strict'
+
+const ud = require('urban-dictionary')
+
+var id = 217456
+
+// Callback example.
+ud.defid(id, (error, entry) => {
+  if (error) {
+    console.error(error.message)
+  } else {
+    console.log(entry.word)
+    console.log(entry.definition)
+    console.log(entry.example)
+  }
+})
+
+// Promise example.
+ud.defid(id).then((result) => {
+  console.log(result.word)
+  console.log(result.definition)
+  console.log(result.example)
+}).catch((error) => {
+  console.error(error.message)
+})
+```
 
 ### random
 Use this to obtain a random definition.
@@ -150,8 +197,8 @@ ud.term(definition).then((result) => {
     * A: I don't really know the answer. However, sites nowadays use an authorization name and password in the URL queries to restrict their API access to certain individuals. If Urban Dictionary didn't want others using it, they would had done so by now. In short: As long as we don't abuse the API to spam requests, we should be fine.
 * Q: Why use standardjs coding style?
     * A: There are many different coding rules of JavaScript being used today. Since this standard is being used by many packages and is becoming common on github. I've decided to start using it myself and quickly started to like it. It saves time by not having to worry which rules to follow or finding ways around strict styles such as JSLint.
-* Q: What happened to the 'defid' method?
-    * A: It seems they had removed it from their public API. Attempting to access an existing defid now returns a JSON containing `{"error":500}` so I've removed the method. If should it return without my knowledge, you can freely post an issue about it and I'll add it back.
+* Q: One of the methods isn't working?
+    * A: Give it a day or two. The chances are that something had gone down on urbandictionary.com API server. It has happened before after I thought they removed one of their URL methods. If it's still not working after two days, post an [issue](https://github.com/NightfallAlicorn/urban-dictionary/issues) and I'll check it out.
 * Q: Is it possible to use both callback and promise at the same time?
     * A: Yes. However, it's not recommended. Do note that if you do decide to use them both, callback will run first before the promise.
 

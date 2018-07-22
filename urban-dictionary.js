@@ -62,6 +62,61 @@ function get (url, callback) {
 }
 
 /**
+ * Asynchronously obtain Urban Dictionary term entry by defid.
+ * @param {number} id Definition entry to retrieve.
+ * @param {function(error, object):promise} callback
+ * * argument[0] {error} error
+ * * argument[1] {object} entry
+ * * * 'author' {string} Name of the poster.
+ * * * 'current_vote' {string} Unknown. It only returns an empty string.
+ * * * 'defid' {number} The unique definition entry ID.
+ * * * 'definition' {string} The definition description.
+ * * * 'example' {string} An example use of the definition.
+ * * * 'permalink' {string} A shortened link to Urban Dictionary page of the definition.
+ * * * 'thumbs_down' {number} Number of down votes.
+ * * * 'thumbs_up' {number} Number of up votes.
+ * * * 'word' {string} The word of the definition. Be aware that the casing might be different.
+ * @return {promise} Returns a promise object containing the 'entry' property.
+ */
+methods.defid = function defid (id, callback) {
+  if (typeof id !== 'number') {
+    throw new Error('id has to be a number.')
+  }
+
+  return new Promise((resolve, reject) => {
+    const query = querystring.stringify({'defid': id})
+
+    get('http://api.urbandictionary.com/v0/define?' + query, (error, result) => {
+      if (error) {
+        if (typeof callback === 'function') {
+          callback(error)
+        }
+
+        reject(error)
+        return
+      }
+
+      if (!result.list[0]) {
+        let error = new Error('defid ' + id + " doesn't exist or has been deleted.")
+
+        if (typeof callback === 'function') {
+          callback(error)
+        }
+
+        reject(error)
+        return
+      }
+
+      if (typeof callback === 'function') {
+        callback(null, result.list[0])
+      }
+
+      resolve(result.list[0])
+    })
+  })
+}
+
+/**
  * Asynchronously obtain a random definition from Urban Dictionary.
  *
  * When called, 10 definitions are downloaded at once and are output 1 at a time.
@@ -118,7 +173,7 @@ methods.random = function random (callback) {
 
 /**
  * Asynchronously obtain Urban Dictionary by term.
- * @param {string} word Definition to search for.
+ * @param {number|string} word Definition to search for.
  * @param {function(error, array, array, array):promise} callback
  * * argument[0] {error} error
  * * argument[1] {array of object} entries
@@ -136,6 +191,10 @@ methods.random = function random (callback) {
  * @return {promise} Returns a promise object containing entries, tags and sounds properties.
  */
 methods.term = function term (word, callback) {
+  if (typeof word !== 'string') {
+    throw new Error('word has to be a string.')
+  }
+
   return new Promise((resolve, reject) => {
     const query = querystring.stringify({'term': word})
 
