@@ -1,6 +1,6 @@
 {
   "name": "urban-dictionary",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Simple Node.js module that provides easy methods of obtaining urbandictionary.com definitions.",
   "main": "urban-dictionary.js",
   "scripts": {
