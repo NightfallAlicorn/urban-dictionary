@@ -47,7 +47,7 @@ Use this to retrieve a specific definition entry by defid.
 
 *Arguments*
 
-* `id` **id** The definition entry to retrieve.
+* `id` **Number** The definition entry to retrieve.
 * `callback` **Function**
     * `error` **Error** If there's an error else **null**.
     * `entry` **[Definition Object](#definition-object)**
