@@ -8,7 +8,7 @@ var randomCache = []
 
 /**
  * Copies an object without it being linked to the original.
- * @param {object} object
+ * @param {object} object Original object.
  * @return {object} Deep copied object.
  */
 function deepCopy (object) {
