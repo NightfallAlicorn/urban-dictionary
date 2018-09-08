@@ -2,7 +2,10 @@
 
 const ud = require('./urban-dictionary')
 
-ud.defid(217456, (error, entry) => {
+var id = 217456
+var word = 'wwawdwadawdawcafdaw'
+
+ud.defid(id, (error, entry) => {
   if (error) {
     console.error(`defid (callback) - ${error.message}`)
     return
@@ -28,7 +31,7 @@ ud.random((error, entry) => {
   console.error(`random (promise) - ${error.message}`)
 })
 
-ud.term('word', (error, entries, tags, sounds) => {
+ud.term(word, (error, entries, tags, sounds) => {
   if (error) {
     console.error(`term (callback) - ${error.message}`)
     return

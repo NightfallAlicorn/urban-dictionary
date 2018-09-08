@@ -6,6 +6,11 @@ const querystring = require('querystring')
 var methods = {}
 var randomCache = []
 
+process.on('unhandledRejection', () => {
+  // This is a place holder to prevent missing Promise catch errors.
+  // Since the user may use a callback instead of a Promise object.
+})
+
 /**
  * Copies an object without it being linked to the original.
  * @param {object} object Original object.
