@@ -30,10 +30,10 @@ function get (url, callback) {
 
     if (statusCode !== 200) {
       error = new Error(`Unable to send request for definitions. Status code: '${statusCode}'`)
-      error.code = "ERR_REQUEST_SEND"
+      error.code = 'ERR_REQUEST_SEND'
     } else if (contentType.indexOf('application/json') === -1) {
       error = new Error(`Content retrieved isn't JSON. Content type: '${contentType}'`)
-      error.code = "ERR_RESPONSE_NOT_JSON"
+      error.code = 'ERR_RESPONSE_NOT_JSON'
     }
 
     if (error) {
@@ -61,7 +61,7 @@ function get (url, callback) {
         // In case somehow the data got set to not null. This is more of a failsafe.
         data = null
         error = new Error('Failed to parse retrieved Urban Dictionary JSON.')
-        error.code = "ERR_JSON_PARSE"
+        error.code = 'ERR_JSON_PARSE'
       }
 
       callback(error, data)
@@ -89,7 +89,7 @@ function get (url, callback) {
 methods.defid = function defid (id, callback) {
   if (typeof id !== 'number') {
     let error = new TypeError('id has to be a number.')
-    error.code = "ERR_ID_NOT_NUMBER"
+    error.code = 'ERR_ID_NOT_NUMBER'
     
     throw error
   }
@@ -108,8 +108,8 @@ methods.defid = function defid (id, callback) {
       }
 
       if (!result.list[0]) {
-        let error = new Error('defid ' + id + " doesn't exist or has been deleted.")
-        error.code = "ERR_DEFINITION_NOT_FOUND"
+        let error = new Error('defid ' + id + ' doesn't exist or has been deleted.')
+        error.code = 'ERR_DEFINITION_NOT_FOUND'
 
         if (typeof callback === 'function') {
           callback(error)
@@ -205,7 +205,7 @@ methods.random = function random (callback) {
 methods.term = function term (word, callback) {
   if (typeof word !== 'string') {
     let error = new TypeError('word has to be a string.')
-    error.code = "ERR_WORD_NOT_STRING"
+    error.code = 'ERR_WORD_NOT_STRING'
     
     throw error
   }
@@ -225,7 +225,7 @@ methods.term = function term (word, callback) {
 
       if (!result.list[0]) {
         let error = new Error(word + ' is undefined.')
-        error.code = "ERR_WORD_UNDEFINED"
+        error.code = 'ERR_WORD_UNDEFINED'
 
         if (typeof callback === 'function') {
           callback(error)
