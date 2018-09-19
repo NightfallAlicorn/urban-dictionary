@@ -20,6 +20,14 @@ function deepCopy (object) {
   return JSON.parse(JSON.stringify(object))
 }
 
+/**
+ * Retrieves a JSON parsed object.
+ *
+ * @param {string} url The full URL to retrieve from.
+ * @param {function(error, object):void} callback
+ * * argument[0] {error} error
+ * * argument[1] {object} entry
+ */
 function get (url, callback) {
   // https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_http_get_options_callback
   http.get(url, (result) => {
@@ -90,7 +98,7 @@ methods.defid = function defid (id, callback) {
   if (typeof id !== 'number') {
     let error = new TypeError('id has to be a number.')
     error.code = 'ERR_ID_NOT_NUMBER'
-    
+
     throw error
   }
 
@@ -108,7 +116,7 @@ methods.defid = function defid (id, callback) {
       }
 
       if (!result.list[0]) {
-        let error = new Error('defid ' + id + ' doesn't exist or has been deleted.')
+        let error = new Error('defid ' + id + " doesn't exist or has been deleted.")
         error.code = 'ERR_DEFINITION_NOT_FOUND'
 
         if (typeof callback === 'function') {
@@ -206,7 +214,7 @@ methods.term = function term (word, callback) {
   if (typeof word !== 'string') {
     let error = new TypeError('word has to be a string.')
     error.code = 'ERR_WORD_NOT_STRING'
-    
+
     throw error
   }
 

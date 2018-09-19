@@ -34,6 +34,7 @@ ud.random((error, entry) => {
 ud.term(word, (error, entries, tags, sounds) => {
   if (error) {
     console.error(`term (callback) - ${error.message}`)
+    console.error(error.code)
     return
   }
 
