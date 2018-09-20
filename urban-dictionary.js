@@ -22,11 +22,10 @@ function deepCopy (object) {
 
 /**
  * Retrieves a JSON parsed object.
- *
  * @param {string} url The full URL to retrieve from.
  * @param {function(error, object):void} callback
  * * argument[0] {error} error
- * * argument[1] {object} entry
+ * * argument[1] {object} Parsed JSON result.
  */
 function get (url, callback) {
   // https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_http_get_options_callback
