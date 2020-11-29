@@ -12,6 +12,16 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 
 ---
 
+* [Installing](#installing)
+* [Actions](#actions)
+    * [defid](#defid)
+    * [random](#random)
+    * [term](#term)
+* [FAQ](#faq)
+* [Object Dictionary](#object-dictionary)
+
+---
+
 ## Installing
 
 ### Via NPM (Recommended)
@@ -29,16 +39,6 @@ Global Uninstall `npm uninstall urban-dictionary -g`
 ### Via Downloadable Zip
 
 Download the latest release from [GitHub](https://github.com/NightfallAlicorn/urban-dictionary/releases) and extract the urban-dictionary.js into your project folder. Beware that you have got to `require('./urban-dictionary')` with the `./` prefix for local directory when you install by zip.
-
----
-
-* [Installing](#installing)
-* [Actions](#actions)
-    * [defid](#defid)
-    * [random](#random)
-    * [term](#term)
-* [FAQ](#faq)
-* [Object Dictionary](#object-dictionary)
 
 ## Actions
 
@@ -208,6 +208,7 @@ ud.term(definition).then((result) => {
 
 * `author` **String** Name of the poster.
 * `current_vote` **String** Unknown. It only returns an empty string.
+* `date`
 * `defid` **Number** The unique definition entry ID.
 * `definition` **String** The definition description.
 * `example` **String** An example use of the definition.
@@ -215,3 +216,17 @@ ud.term(definition).then((result) => {
 * `thumbs_down` **Number** Number of down votes.
 * `thumbs_up` **Number** Number of up votes.
 * `word` **String** The word of the definition. Be aware that the casing might be different.
+
+| Name         | Type   | Explanation                                                       |
+| :-           | :-     | :-                                                                |
+| author       | String | The user who posted the definition.                               |
+| current_vote | String |                                                                   |
+| date         | String | Date when posted. `wordsOfTheDay` only. Format: "<Month> <Year>"  |
+| defid        | Number | The unique definition ID.                                         |
+| example      | String | An example usage of the definition.                               |
+| permalink    | String | The definition post URL.                                          |
+| thumbs_down  | Number | The number of downvotes for teh definition.                       |
+| thumbs_up    | Number | The number of upvotes for the definition.                         |
+| sound_urls   | Array  |                                                                   |
+| word         | String | The looked up definition. Casing may differ results.              |
+| written_on   | String | <Year>
