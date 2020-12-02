@@ -2,8 +2,8 @@
 
 const ud = require('./urban-dictionary')
 
-var id = 217456
-var word = 'wwawdwadawdawcafdaw'
+const id = 217456
+const word = 'test'
 
 ud.defid(id, (error, entry) => {
   if (error) {

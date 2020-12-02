@@ -1,0 +1,6 @@
+http://api.urbandictionary.com/v0/autocomplete-extra?term=word
+http://api.urbandictionary.com/v0/autocomplete?term=word
+http://api.urbandictionary.com/v0/define?defid=217456
+http://api.urbandictionary.com/v0/define?term=test
+http://api.urbandictionary.com/v0/random
+http://api.urbandictionary.com/v0/words_of_the_day

@@ -12,6 +12,7 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 
 ---
 
+* [What's New](#what's-new)
 * [Installing](#installing)
 * [Actions](#actions)
     * [defid](#defid)
@@ -21,6 +22,17 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * [Object Dictionary](#object-dictionary)
 
 ---
+
+## What's New
+
+* `autocomplete-extra`, `autocomplete` and `words_of_the_day` methods added with help from [this](https://github.com/NightfallAlicorn/urban-dictionary/issues/8) posted issue.
+* At some point. Urban stopped providing providing `sounds` and `tags` which the `term` method used to obtain. These have been removed from the module.
+* The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards. Most notably:
+  * "no-var" and "prefer-const" to encourage the use of `const` and `let`.
+  * "standard(quote-props)" to encourage not using quotes when defining object properties.
+  * "standard(object-curly-spacing)" to encourage adding spaces before and after defining an object contents on single line.
+* Better layout and formatting of this README.md file.
+
 
 ## Installing
 
@@ -204,29 +216,34 @@ ud.term(definition).then((result) => {
 
 ## Object Dictionary
 
+### AutoCompleteExtra Object
+
+| Name    | Type   | Explanation                               |
+| :-      | :-     | :-                                        |
+| preview | String | An example usage of the term possibility. |
+| term    | String | An auto complete term possibility.        |
+
+#### AutoComplete Object
+
+| Name    | Type   | Explanation                        |
+| :-      | :-     | :-                                 |
+| term    | String | An auto complete term possibility. |
+
 ### Definition Object
 
-* `author` **String** Name of the poster.
-* `current_vote` **String** Unknown. It only returns an empty string.
-* `date`
-* `defid` **Number** The unique definition entry ID.
-* `definition` **String** The definition description.
-* `example` **String** An example use of the definition.
-* `permalink` **String** A shortened link to Urban Dictionary page of the definition.
-* `thumbs_down` **Number** Number of down votes.
-* `thumbs_up` **Number** Number of up votes.
-* `word` **String** The word of the definition. Be aware that the casing might be different.
+**Be aware that the `date` property is only available for the `wordsOfTheDay` method.**
 
-| Name         | Type   | Explanation                                                       |
-| :-           | :-     | :-                                                                |
-| author       | String | The user who posted the definition.                               |
-| current_vote | String |                                                                   |
-| date         | String | Date when posted. `wordsOfTheDay` only. Format: "<Month> <Year>"  |
-| defid        | Number | The unique definition ID.                                         |
-| example      | String | An example usage of the definition.                               |
-| permalink    | String | The definition post URL.                                          |
-| thumbs_down  | Number | The number of downvotes for teh definition.                       |
-| thumbs_up    | Number | The number of upvotes for the definition.                         |
-| sound_urls   | Array  |                                                                   |
-| word         | String | The looked up definition. Casing may differ results.              |
-| written_on   | String | <Year>
+| Name         | Type   | Explanation                                                                                     |
+| :-           | :-     | :-                                                                                              |
+| author       | String | Name of the definition poster.                                                                  |
+| current_vote | String | Unknown.                                                                                        |
+| date         | String | The date when this definition was posted on Words of the Day.                                   |
+| defid        | Number | The unique ID for this definition.                                                              |
+| definition   | String | An explanation of the term.                                                                     |
+| example      | String | An example usage of the definition.                                                             |
+| permalink    | String | Link to the definition page.                                                                    |
+| sound_urls   | Array  | Presumably an Array of Strings containing URLs. I hadn't seen any results with any data though. |
+| thumbs_down  | Number | The number of declined votes for the definition.                                                |
+| thumbs_up    | Number | The number of accepted votes for the definition.                                                |
+| word         | String | Word used to find this definition.                                                              |
+| written_on   | String | The date the definition was posted. Format: "[YYYY]-[MM]-[DD]T[HH]:[MM]:[SS].[MMM][Z]"          |
