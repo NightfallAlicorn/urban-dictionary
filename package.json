@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/NightfallAlicorn/urban-dictionary#readme",
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=14.15.1"
   },
   "files": [
     "urban-dictionary.js"

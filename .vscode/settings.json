@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
-        "defid"
-    ]
+        "callbackify",
+        "defid",
+        "urbandictionary"
+    ],
+    "editor.tabSize": 2
 }
