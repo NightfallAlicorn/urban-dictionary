@@ -111,7 +111,7 @@ promises.random = async () => {
 }
 
 promises.term = async (term) => {
-  if (typeof word !== 'string') {
+  if (typeof term !== 'string') {
     throw new TypeError('term has to be a string.')
   }
 
@@ -143,6 +143,7 @@ methods.random = (callback) => { return (!callback ? promises.random() : callbac
 methods.term = (word, callback) => { return (!callback ? promises.term(word) : callbacks.term(word, callback)) }
 */
 
+/*
 Object.keys(promises).forEach((property) => {
   // Create callbackify variations of the async function promises.
   callbacks[property] = utilities.callbackify(promises[property])
@@ -156,5 +157,69 @@ Object.keys(promises).forEach((property) => {
     }
   }
 })
+*/
+
+// Create callback versions of the promise methods
+Object.keys(promises).forEach((property) => {
+  callbacks[property] = utilities.callbackify(promises[property])
+})
+
+/**
+ * Get an array up to 20 autocomplete extra objects.
+ * @param {string} term
+ * @param {function(error, array):void} callback
+ * @return {promise}
+ */
+methods.autocompleteExtra = (term, callback) => {
+  return (!callback ? promises.autocompleteExtra(term) : callbacks.autocompleteExtra(term, callback))
+}
+
+/**
+ * Get an array up to 20 suggested words by term.
+ * @param {string} term
+ * @param {function(error, array):void} callback
+ * @return {promise}
+ */
+methods.autocomplete = (term, callback) => {
+  return (!callback ? promises.autocomplete(term) : callbacks.autocomplete(term, callback))
+}
+
+/**
+ * Get a definition object by id.
+ * @param {number} id
+ * @param {function} callback
+ * @return {promise}
+ */
+methods.defid = (id, callback) => {
+  return (!callback ? promises.defid(id) : callbacks.defid(id, callback))
+}
+
+/**
+ * Get an array up to 10 random definition objects.
+ * @param {function(error, DefinitionObject):void} callback
+ * @return {promise}
+ */
+methods.random = (callback) => {
+  return (!callback ? promises.random() : callbacks.random(callback))
+}
+
+/**
+ * Get an array up to 10 definition objects by term.
+ * @param {string} term
+ * @param {function(error, DefinitionObject):void} callback
+ * @return {promise}
+ */
+methods.term = (term, callback) => {
+  return (!callback ? promises.term(term) : callbacks.term(term, callback))
+}
+
+/**
+ * Get an array of 10 daily definition objects by Words of the Day.
+ * @param {function(error, DefinitionObject):void} callback
+ * @return {promise}
+ */
+methods.wordsOfTheDay = (callback) => {
+  return (!callback ? promises.wordsOfTheDay() : callbacks.wordsOfTheDay(callback))
+}
 
 module.exports = methods
