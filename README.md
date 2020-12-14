@@ -15,11 +15,13 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * [What's New](#what's-new)
 * [Installing](#installing)
 * [Actions](#actions)
-    * [defid](#defid)
-    * [random](#random)
-    * [term](#term)
+  * [defid](#defid)
+  * [random](#random)
+  * [term](#term)
 * [FAQ](#faq)
 * [Object Dictionary](#object-dictionary)
+  * [AutocompleteExtraObject](#autocomplete-extra-object)
+  * [DefinitionObject](#definition-object)
 
 ---
 
@@ -53,6 +55,46 @@ Global Uninstall `npm uninstall urban-dictionary -g`
 Download the latest release from [GitHub](https://github.com/NightfallAlicorn/urban-dictionary/releases) and extract the urban-dictionary.js into your project folder. Beware that you have got to `require('./urban-dictionary')` with the `./` prefix for local directory when you install by zip.
 
 ## Actions
+
+### autocomplete
+Use this to retrieve a list of autocomplete suggestions for a searched term.
+
+*Arguments*
+
+* `term` **String** Term suggestions to lookup.
+* `callback` **Function**
+    * `error` **Error** If there's an error else **null**.
+    * `data` **Array of String**
+
+*Return*
+
+* `return` **Promise**
+    * `then` **Array of String)**
+    * `catch` **Error**
+
+E.g.
+
+```javascript
+'use strict'
+
+const ud = require('urban-dictionary')
+
+// Callback method.
+ud.autocomplete('test', (error, results) => {
+  if (error) {
+    console.error(error.message)
+    return
+  }
+  console.log(results)
+})
+
+// Promise method.
+ud.autocomplete('test').then((results) => {
+  console.log(results)
+}).catch((error) => {
+  console.error(error.message)
+})
+```
 
 ### defid
 Use this to retrieve a specific definition entry by defid.
@@ -207,27 +249,21 @@ ud.term(definition).then((result) => {
         * `http://api.urbandictionary.com/v0/random`
 * Q: If they haven't documented it. Are we even allowed to use their site API?
     * A: I don't really know the answer. However, sites nowadays use an authorization name and password in the URL queries to restrict their API access to certain individuals. If Urban Dictionary didn't want others using it, they would had done so by now. In short: As long as we don't abuse the API to spam requests, we should be fine.
-* Q: Why use standardjs coding style?
+* Q: Why use StandardJS coding style?
     * A: There are many different coding rules of JavaScript being used today. Since this standard is being used by many packages and is becoming common on github. I've decided to start using it myself and quickly started to like it. It saves time by not having to worry which rules to follow or finding ways around strict styles such as JSLint.
 * Q: One of the methods isn't working?
     * A: Give it a day or two. The chances are that something had gone down on urbandictionary.com API server. It has happened before after I thought they removed one of their URL methods. If it's still not working after two days, post an [issue](https://github.com/NightfallAlicorn/urban-dictionary/issues) and I'll check it out.
 * Q: Is it possible to use both callback and promise at the same time?
-    * A: Yes. However, it's not recommended. Do note that if you do decide to use them both, callback will run first before the promise.
+    * A: This feature is no longer available and was removed after v2.1.1 since it created poor coding practices.
 
 ## Object Dictionary
 
-### AutoCompleteExtra Object
+### Autocomplete Extra Object
 
 | Name    | Type   | Explanation                               |
 | :-      | :-     | :-                                        |
 | preview | String | An example usage of the term possibility. |
 | term    | String | An auto complete term possibility.        |
-
-#### AutoComplete Object
-
-| Name    | Type   | Explanation                        |
-| :-      | :-     | :-                                 |
-| term    | String | An auto complete term possibility. |
 
 ### Definition Object
 

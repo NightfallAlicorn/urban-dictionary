@@ -7,6 +7,24 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "test/autocomplete.js",
+            "program": "${workspaceFolder}/test/autocomplete.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test/autocompleteExtra.js",
+            "program": "${workspaceFolder}/test/autocompleteExtra.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test/random.js",
+            "program": "${workspaceFolder}/test/random.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "test/term.js",
             "program": "${workspaceFolder}/test/term.js"
         },

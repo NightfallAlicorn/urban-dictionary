@@ -2,23 +2,23 @@
 
 const ud = require('../urban-dictionary')
 
-ud.term('test').then((results) => {
-  console.log('term (promise)')
+ud.random().then((results) => {
+  console.log('random (promise)')
 
   Object.entries(results[0]).forEach(([key, prop]) => {
     console.log(`${key}: ${prop}`)
   })
 }).catch((error) => {
-  console.error(`term (promise) - error ${error.message}`)
+  console.error(`random (promise) - error ${error.message}`)
 })
 
-ud.term('test', (error, results) => {
+ud.random((error, results) => {
   if (error) {
-    console.error(`term (callback) error - ${error.message}`)
+    console.error(`random (callback) error - ${error.message}`)
     return
   }
 
-  console.log('term (promise)')
+  console.log('random (promise)')
 
   Object.entries(results[0]).forEach(([key, prop]) => {
     console.log(`${key}: ${prop}`)

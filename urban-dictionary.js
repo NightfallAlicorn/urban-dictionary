@@ -17,16 +17,10 @@ const get = (pathname, query) => {
   return new Promise((resolve, reject) => {
     const options = {
       host: 'api.urbandictionary.com',
-      method: 'GET'
+      path: (!query ? `/v0/${pathname}` : `/v0/${pathname}?${querystring.stringify(query)}`)
     }
 
-    if (!query) {
-      options.path = `/v0/${pathname}`
-    } else {
-      options.path = `/v0/${pathname}?${querystring.stringify(query)}`
-    }
-
-    const request = http.request(options, (response) => {
+    const request = http.get(options, (response) => {
       let data = ''
 
       response.on('data', (chunk) => {
@@ -53,8 +47,6 @@ const get = (pathname, query) => {
         reject(new Error('Unable to connect to Urban Dictionary API. Their servers may be temporary offline.'))
       }
     })
-
-    request.end()
   })
 }
 
@@ -85,6 +77,23 @@ promises.autocomplete = async (term) => {
       throw noResults()
     }
     return result
+  })
+}
+
+promises.define = async (value) => {
+  const type = typeof value
+
+  if (!['number', 'string'].indexOf(type)) {
+    throw new TypeError('value has to be a number for defid or string for term')
+  }
+
+  const query = (type === 'number' ? { defid: value } : { term: value })
+
+  return get('define', query).then((result) => {
+    if (!result.list[0]) {
+      throw noResults()
+    }
+    return (type === 'number' ? result.list[0] : result.list)
   })
 }
 
@@ -163,6 +172,23 @@ Object.keys(promises).forEach((property) => {
 Object.keys(promises).forEach((property) => {
   callbacks[property] = utilities.callbackify(promises[property])
 })
+
+/**
+ * @typedef {object} DefinitionObject
+ * @property {string} author
+ * @property {string} current_vote
+ * @property {string} date
+ * @property {number} defid
+ * @property {string} definition
+ * @property {string} example
+ * @property {string} permalink
+ * @property {string[]} sound_urls
+ * @property {number} thumbs_down
+ * @property {number} thumbs_up
+ * @property {string} word
+ * @property {string} written_on
+ * @param {DefinitionObject} definitions
+ */
 
 /**
  * Get an array up to 20 autocomplete extra objects.
