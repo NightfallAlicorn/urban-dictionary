@@ -7,14 +7,26 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "test/autocompleteExtra.js",
+            "program": "${workspaceFolder}/test/autocompleteExtra.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "test/autocomplete.js",
             "program": "${workspaceFolder}/test/autocomplete.js"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "test/autocompleteExtra.js",
-            "program": "${workspaceFolder}/test/autocompleteExtra.js"
+            "name": "test/define.js",
+            "program": "${workspaceFolder}/test/define.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "test/getDefinitionByDefid.js",
+            "program": "${workspaceFolder}/test/getDefinitionByDefid.js"
         },
         {
             "type": "node",
@@ -25,8 +37,8 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "test/term.js",
-            "program": "${workspaceFolder}/test/term.js"
+            "name": "test/wordsOfTheDay.js",
+            "program": "${workspaceFolder}/test/wordsOfTheDay.js"
         },
         {
             "type": "node",

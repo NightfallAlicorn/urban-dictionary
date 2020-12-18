@@ -18,7 +18,7 @@ ud.random((error, results) => {
     return
   }
 
-  console.log('random (promise)')
+  console.log('random (callback)')
 
   Object.entries(results[0]).forEach(([key, prop]) => {
     console.log(`${key}: ${prop}`)

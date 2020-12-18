@@ -18,7 +18,7 @@ ud.term('test', (error, results) => {
     return
   }
 
-  console.log('term (promise)')
+  console.log('term (callback)')
 
   Object.entries(results[0]).forEach(([key, prop]) => {
     console.log(`${key}: ${prop}`)

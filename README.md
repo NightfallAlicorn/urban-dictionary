@@ -15,26 +15,30 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * [What's New](#what's-new)
 * [Installing](#installing)
 * [Actions](#actions)
+  * [autocompleteExtra](#autocomplteExtra)
+  * [autocomplete](#autocomplete)
   * [defid](#defid)
   * [random](#random)
   * [term](#term)
+  * [wordsOfTheDay](#wordsOfTheDay)
 * [FAQ](#faq)
 * [Object Dictionary](#object-dictionary)
-  * [AutocompleteExtraObject](#autocomplete-extra-object)
-  * [DefinitionObject](#definition-object)
+  * [AutocompleteExtraObject](#AutocompleteExtraObject)
+  * [DefinitionObject](#DefinitionObject)
 
 ---
 
 ## What's New
 
-* `autocomplete-extra`, `autocomplete` and `words_of_the_day` methods added with help from [this](https://github.com/NightfallAlicorn/urban-dictionary/issues/8) posted issue.
-* At some point. Urban stopped providing providing `sounds` and `tags` which the `term` method used to obtain. These have been removed from the module.
-* The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards. Most notably:
-  * "no-var" and "prefer-const" to encourage the use of `const` and `let`.
-  * "standard(quote-props)" to encourage not using quotes when defining object properties.
-  * "standard(object-curly-spacing)" to encourage adding spaces before and after defining an object contents on single line.
+* Rewritten the module with more ES6 features.
+* Module size has been reduced slightly.
+* New methods have been added with the help from [this](https://github.com/NightfallAlicorn/urban-dictionary/issues/8) posted issue.
+  * `autocompleteExtra` 
+  * `autocomplete`
+  * `words_of_the_day`
+* At some point. Urban had stopped providing `sounds` and `tags` with certain methods. These have been removed from the module.
+* The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards.
 * Better layout and formatting of this README.md file.
-
 
 ## Installing
 
@@ -57,19 +61,20 @@ Download the latest release from [GitHub](https://github.com/NightfallAlicorn/ur
 ## Actions
 
 ### autocomplete
-Use this to retrieve a list of autocomplete suggestions for a searched term.
+
+Use this to retrieve an array up to 20 search suggested strings.
 
 *Arguments*
 
-* `term` **String** Term suggestions to lookup.
+* `term` **String** The term to lookup.
 * `callback` **Function**
-    * `error` **Error** If there's an error else **null**.
+    * `error` **Error** if there's an error else **null**.
     * `data` **Array of String**
 
 *Return*
 
 * `return` **Promise**
-    * `then` **Array of String)**
+    * `then` **Array of String**
     * `catch` **Error**
 
 E.g.
@@ -77,39 +82,45 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('urban-dictionary')
+const ud = require('../urban-dictionary')
 
-// Callback method.
+// Callback
 ud.autocomplete('test', (error, results) => {
   if (error) {
-    console.error(error.message)
+    console.error(`autocomplete (callback) error - ${error.message}`)
     return
   }
-  console.log(results)
+
+  console.log('autocomplete (callback)')
+
+  console.log(results.join(', '))
 })
 
-// Promise method.
+// Promise
 ud.autocomplete('test').then((results) => {
-  console.log(results)
+  console.log('autocomplete (promise)')
+
+  console.log(results.join(', '))
 }).catch((error) => {
-  console.error(error.message)
+  console.error(`autocomplete (promise) - error ${error.message}`)
 })
 ```
 
-### defid
-Use this to retrieve a specific definition entry by defid.
+### autocompleteExtra
+
+Use this to retrieve an array up to 20 search suggested [AutocompleteExtraObject](#AutocompleteExtraObject) that contain a preview and suggested term.
 
 *Arguments*
 
-* `id` **Number** The definition entry to retrieve.
+* `term` **String** The term to lookup.
 * `callback` **Function**
-    * `error` **Error** If there's an error else **null**.
-    * `entry` **[Definition Object](#definition-object)**
+    * `error` **Error** if there's an error else **null**.
+    * `data` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject]**
 
 *Return*
 
 * `return` **Promise**
-    * `then` **[Definition Object](#definition-object)**
+    * `then` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject]**
     * `catch` **Error**
 
 E.g.
@@ -117,32 +128,134 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('urban-dictionary')
+const ud = require('../urban-dictionary')
 
-var id = 217456
-
-// Callback example.
-ud.defid(id, (error, entry) => {
+// Callback
+ud.autocompleteExtra('test', (error, results) => {
   if (error) {
-    console.error(error.message)
-  } else {
-    console.log(entry.word)
-    console.log(entry.definition)
-    console.log(entry.example)
+    console.error(`autocomplete (callback) - ${error.message}`)
+    return
   }
+
+  console.log('autocompleteExtra (callback)')
+
+  results.forEach(({ preview, term }) => {
+    console.log(`${term} - ${preview}`)
+  })
 })
 
-// Promise example.
-ud.defid(id).then((result) => {
-  console.log(result.word)
-  console.log(result.definition)
-  console.log(result.example)
+// Promise
+ud.autocompleteExtra('test').then((results) => {
+  console.log('autocompleteExtra (promise)')
+
+  results.forEach(({ preview, term }) => {
+    console.log(`${term} - ${preview}`)
+  })
 }).catch((error) => {
-  console.error(error.message)
+  console.error(`autocomplete (promise) - ${error.message}`)
+})
+```
+
+### define
+
+Use this to retrieve an array up to 10 [DefinitionObject](#DefinitionObject).
+
+*Arguments*
+
+* `term` **String** The definition to lookup.
+* `callback` **Function**
+    * `error` **Error** If there's an error else **null**.
+    * `definitions` **Array of [DefinitionObject](#DefinitionObject)**
+
+*Return*
+
+* `return` **Promise**
+    * `then` **Array of [DefinitionObject](#DefinitionObject)**
+    * `catch` **Error**
+
+E.g.
+
+```javascript
+'use strict'
+
+const ud = require('../urban-dictionary')
+
+ud.define('test').then((results) => {
+  console.log('define (promise)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+}).catch((error) => {
+  console.error(`define (promise) - error ${error.message}`)
+})
+
+ud.define('test', (error, results) => {
+  if (error) {
+    console.error(`define (callback) error - ${error.message}`)
+    return
+  }
+
+  console.log('define (callback)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+})
+```
+
+### getDefinitionByDefid
+
+Use this to retrieve a specific definition by its defid.
+
+*Arguments*
+
+* `defid` **Number** The definition defid to retrieve.
+* `callback` **Function**
+    * `error` **Error** if there's an error else **null**.
+    * `definition` **[DefinitionObject](#DefinitionObject)**
+
+*Return*
+
+* `return` **Promise**
+    * `then` **[DefinitionObject](#DefinitionObject)**
+    * `catch` **Error**
+
+E.g.
+
+```javascript
+'use strict'
+
+const ud = require('../urban-dictionary')
+
+// Callback
+ud.getDefinitionByDefid(217456, (error, result) => {
+  if (error) {
+    console.error(`getDefinitionByDefid (callback) error - ${error.message}`)
+    return
+  }
+
+  console.log('getDefinitionByDefid (callback)')
+
+  Object.entries(result).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+})
+
+// Promise
+ud.getDefinitionByDefid(217456).then((result) => {
+  console.log('getDefinitionByDefid (promise)')
+
+  Object.entries(result).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+}).catch((error) => {
+  console.error(`getDefinitionByDefid (promise) - error ${error.message}`)
 })
 ```
 
 ### random
+
 Use this to obtain a random definition.
 
 Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 definitions at once. This action will store all 10 in a cache on first use and provide them 1 at a time on each use. Each entry that gets provided gets removed from the cache. Once all the entries have been provided, it will retrieve another 10 once the cache is empty. Until all the entries have been provided, all the definitions that are currently stored in the cache are provided first.
@@ -187,58 +300,6 @@ ud.random().then((result) => {
 })
 ```
 
-### term
-Use this to retrieve a specific definition.
-
-*Arguments*
-
-* `definition` **String** The definition to search for.
-* `callback` **Function**
-    * `error` **Error** If there's an error else **null**.
-    * `entries` **Array of [Definition Object](#definition-object)**
-    * `tags` **Array of String** Tags of related words.
-    * `sounds` **Array of String** Full link addresses to `.mp3` and `.wav` files.
-
-*Return*
-
-* `return` **Promise**
-    * `then` **Object**
-      * `entries` **Array of [Definition Object](#definition-object)**
-      * `tags` **Array of String** Tags of related words.
-      * `sounds` **Array of String** Full link addresses to `.mp3` and `.wav` files.
-    * `catch` **Error**
-
-E.g.
-
-```javascript
-'use strict'
-
-const ud = require('urban-dictionary')
-
-var definition = 'word'
-
-// Callback example.
-ud.term(definition, (error, entries, tags, sounds) => {
-  if (error) {
-    console.error(error.message)
-  } else {
-    console.log(entries[0].word)
-    console.log(entries[0].definition)
-    console.log(entries[0].example)
-  }
-})
-
-// Promise example.
-ud.term(definition).then((result) => {
-  const entries = result.entries
-  console.log(entries[0].word)
-  console.log(entries[0].definition)
-  console.log(entries[0].example)
-}).catch((error) => {
-  console.error(error.message)
-})
-```
-
 ## FAQ
 
 * Q: Where did you get the URL to access Urban Dictionary's API? They hadn't got a documented page.
@@ -258,14 +319,14 @@ ud.term(definition).then((result) => {
 
 ## Object Dictionary
 
-### Autocomplete Extra Object
+### AutocompleteExtraObject
 
 | Name    | Type   | Explanation                               |
 | :-      | :-     | :-                                        |
 | preview | String | An example usage of the term possibility. |
 | term    | String | An auto complete term possibility.        |
 
-### Definition Object
+### DefinitionObject
 
 **Be aware that the `date` property is only available for the `wordsOfTheDay` method.**
 

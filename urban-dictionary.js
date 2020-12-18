@@ -11,7 +11,7 @@ const methods = {}
 /**
  *
  * @param {string} pathname The API pathname to use.
- * @param {Object} query Optional. An object containing the query data.
+ * @param {object} query Optional. An object containing the query data.
  */
 const get = (pathname, query) => {
   return new Promise((resolve, reject) => {
@@ -80,24 +80,20 @@ promises.autocomplete = async (term) => {
   })
 }
 
-promises.define = async (value) => {
-  const type = typeof value
-
-  if (!['number', 'string'].indexOf(type)) {
-    throw new TypeError('value has to be a number for defid or string for term')
+promises.define = async (term) => {
+  if (typeof term !== 'string') {
+    throw new TypeError('term has to be a string.')
   }
 
-  const query = (type === 'number' ? { defid: value } : { term: value })
-
-  return get('define', query).then((result) => {
+  return get('define', { term: term }).then((result) => {
     if (!result.list[0]) {
       throw noResults()
     }
-    return (type === 'number' ? result.list[0] : result.list)
+    return result.list
   })
 }
 
-promises.defid = async (id) => {
+promises.getDefinitionByDefid = async (id) => {
   if (typeof id !== 'number') {
     throw new TypeError('id has to be a number')
   }
@@ -119,21 +115,8 @@ promises.random = async () => {
   })
 }
 
-promises.term = async (term) => {
-  if (typeof term !== 'string') {
-    throw new TypeError('term has to be a string.')
-  }
-
-  return get('define', { term: term }).then((result) => {
-    if (!result.list[0]) {
-      throw noResults()
-    }
-    return result.list
-  })
-}
-
 promises.wordsOfTheDay = async () => {
-  return get('words-of-the-day').then((result) => {
+  return get('words_of_the_day').then((result) => {
     if (!result.list[0]) {
       throw noResults()
     }
@@ -211,13 +194,23 @@ methods.autocomplete = (term, callback) => {
 }
 
 /**
- * Get a definition object by id.
- * @param {number} id
+ * Get an array up to 10 definition objects by term.
+ * @param {string} term
+ * @param {function(error, DefinitionObject[]):void} callback
+ * @return {promise}
+ */
+methods.define = (term, callback) => {
+  return (!callback ? promises.define(term) : callbacks.define(term, callback))
+}
+
+/**
+ * Get a definition object by its defid.
+ * @param {number} defid
  * @param {function} callback
  * @return {promise}
  */
-methods.defid = (id, callback) => {
-  return (!callback ? promises.defid(id) : callbacks.defid(id, callback))
+methods.getDefinitionByDefid = (defid, callback) => {
+  return (!callback ? promises.getDefinitionByDefid(defid) : callbacks.getDefinitionByDefid(defid, callback))
 }
 
 /**
@@ -227,16 +220,6 @@ methods.defid = (id, callback) => {
  */
 methods.random = (callback) => {
   return (!callback ? promises.random() : callbacks.random(callback))
-}
-
-/**
- * Get an array up to 10 definition objects by term.
- * @param {string} term
- * @param {function(error, DefinitionObject):void} callback
- * @return {promise}
- */
-methods.term = (term, callback) => {
-  return (!callback ? promises.term(term) : callbacks.term(term, callback))
 }
 
 /**
