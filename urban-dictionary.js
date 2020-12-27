@@ -64,6 +64,8 @@ promises.autocompleteExtra = async (term) => {
       throw noResults()
     }
     return result.results
+  }).catch((error) => {
+    throw error
   })
 }
 
@@ -77,6 +79,8 @@ promises.autocomplete = async (term) => {
       throw noResults()
     }
     return result
+  }).catch((error) => {
+    throw error
   })
 }
 
@@ -90,6 +94,8 @@ promises.define = async (term) => {
       throw noResults()
     }
     return result.list
+  }).catch((error) => {
+    throw error
   })
 }
 
@@ -103,6 +109,8 @@ promises.getDefinitionByDefid = async (id) => {
       throw noResults()
     }
     return result.list[0]
+  }).catch((error) => {
+    throw error
   })
 }
 
@@ -112,6 +120,8 @@ promises.random = async () => {
       throw noResults()
     }
     return result.list
+  }).catch((error) => {
+    throw error
   })
 }
 
@@ -121,6 +131,8 @@ promises.wordsOfTheDay = async () => {
       throw noResults()
     }
     return result.list
+  }).catch((error) => {
+    throw error
   })
 }
 

@@ -17,9 +17,9 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * [Actions](#actions)
   * [autocompleteExtra](#autocomplteExtra)
   * [autocomplete](#autocomplete)
-  * [defid](#defid)
+  * [define](#define)
+  * [getDefinitionByDefid](#getDefinitionByDefid)
   * [random](#random)
-  * [term](#term)
   * [wordsOfTheDay](#wordsOfTheDay)
 * [FAQ](#faq)
 * [Object Dictionary](#object-dictionary)
@@ -305,17 +305,15 @@ ud.random().then((result) => {
 * Q: Where did you get the URL to access Urban Dictionary's API? They hadn't got a documented page.
     * A: I just found them floating around on the web years ago. I don't have a source, sorry.
 * Q: Are there any more methods?
-    * A: Sorry. But these are the only URLs I'm aware of:
-        * `http://api.urbandictionary.com/v0/define` with `?term=WORD_HERE` or `?defid=DEFID_HERE`
-        * `http://api.urbandictionary.com/v0/random`
+    * A: These are the only URLs methods that I'm aware of: [test/urls.txt](test/urls.txt).
 * Q: If they haven't documented it. Are we even allowed to use their site API?
     * A: I don't really know the answer. However, sites nowadays use an authorization name and password in the URL queries to restrict their API access to certain individuals. If Urban Dictionary didn't want others using it, they would had done so by now. In short: As long as we don't abuse the API to spam requests, we should be fine.
 * Q: Why use StandardJS coding style?
     * A: There are many different coding rules of JavaScript being used today. Since this standard is being used by many packages and is becoming common on github. I've decided to start using it myself and quickly started to like it. It saves time by not having to worry which rules to follow or finding ways around strict styles such as JSLint.
 * Q: One of the methods isn't working?
-    * A: Give it a day or two. The chances are that something had gone down on urbandictionary.com API server. It has happened before after I thought they removed one of their URL methods. If it's still not working after two days, post an [issue](https://github.com/NightfallAlicorn/urban-dictionary/issues) and I'll check it out.
+    * A: Give it a day or two. The chances are that api.urbandictionary.com is down. It has happened before after I thought they removed one of their URL methods. If it's still not working after two days, post an [issue](https://github.com/NightfallAlicorn/urban-dictionary/issues) and I'll check it out.
 * Q: Is it possible to use both callback and promise at the same time?
-    * A: This feature is no longer available and was removed after v2.1.1 since it created poor coding practices.
+    * A: This feature is no longer available and was removed after v2.1.1 since it leads to poor coding practices and should be avoided.
 
 ## Object Dictionary
 
