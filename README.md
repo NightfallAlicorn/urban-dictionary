@@ -8,6 +8,8 @@
 [![NPM](https://nodei.co/npm/urban-dictionary.png)](https://npmjs.org/package/urban-dictionary)
 
 
+[![Github All Releases](https://img.shields.io/github/downloads/NightfallAlicorn/urban-dictionary/total.svg)]()
+
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
 ---
