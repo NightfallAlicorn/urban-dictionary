@@ -30,13 +30,18 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 
 ## What's New
 
+**v3.0.0**
+
 * Rewritten the module with more ES6 features.
 * Module size has been reduced slightly.
 * New methods have been added with the help from [this](https://github.com/NightfallAlicorn/urban-dictionary/issues/8) posted issue.
-  * `autocompleteExtra` 
-  * `autocomplete`
-  * `words_of_the_day`
+  * [autocompleteExtra](#autocompleteExtra) 
+  * [autocomplete](#autocomplete)
+  * [words_of_the_day](#words_of_the_day)
 * At some point. Urban had stopped providing `sounds` and `tags` with certain methods. These have been removed from the module.
+* The following methods have been renamed for clarity.
+  * `defid` to [getDefinitionByDefid](#getDefinitionByDefid)
+  * `term` to [define](#define)
 * The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards.
 * Better layout and formatting of this README.md file.
 
@@ -115,12 +120,12 @@ Use this to retrieve an array up to 20 search suggested [AutocompleteExtraObject
 * `term` **String** The term to lookup.
 * `callback` **Function**
     * `error` **Error** if there's an error else **null**.
-    * `data` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject]**
+    * `data` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject)**
 
 *Return*
 
 * `return` **Promise**
-    * `then` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject]**
+    * `then` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject)**
     * `catch` **Error**
 
 E.g.
@@ -206,7 +211,7 @@ ud.define('test', (error, results) => {
 
 ### getDefinitionByDefid
 
-Use this to retrieve a specific definition by its defid.
+Use this to retrieve a specific [DefinitionObject](#DefinitionObject) by its defid.
 
 *Arguments*
 
