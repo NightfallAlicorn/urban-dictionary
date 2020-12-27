@@ -5,7 +5,7 @@
 ![npm-version](https://img.shields.io/npm/v/urban-dictionary)
 ![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)
 
-<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100" style="text-align: right"></a>
+<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px; text-align: right;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
 
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
