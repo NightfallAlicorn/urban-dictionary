@@ -1,6 +1,6 @@
 # urban-dictionary
 
-<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px; text-align: right;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
+<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100" align="right"></a>
 
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 ![github-issue](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)
