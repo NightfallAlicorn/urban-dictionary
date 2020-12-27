@@ -1,6 +1,6 @@
 # urban-dictionary
 
-<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100" align="right"></a>
+<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="100" align="right"></a>
 
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 ![github-issue](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)
@@ -9,8 +9,6 @@
 ![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)
 
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
-
----
 
 * [What's New](#whats-new)
 * [Installing](#installing)
@@ -26,7 +24,7 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
   * [AutocompleteExtraObject](#AutocompleteExtraObject)
   * [DefinitionObject](#DefinitionObject)
 
----
+
 
 ## What's New
 
