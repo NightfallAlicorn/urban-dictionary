@@ -1,11 +1,11 @@
 # urban-dictionary
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-![github](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)
-![npm](https://img.shields.io/npm/l/urban-dictionary)
-![npm](https://img.shields.io/npm/v/urban-dictionary)
-![npm](https://img.shields.io/npm/dm/urban-dictionary)
+![github-issue](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)
+![npm-license](https://img.shields.io/npm/l/urban-dictionary)
+![npm-version](https://img.shields.io/npm/v/urban-dictionary)
+![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="Standard JavaScript" width="100"></a>
 
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
@@ -44,7 +44,7 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards.
 * Better layout and formatting of this README.md file.
 
-Be sure to check the README.md (this document). A lot of stuff from v2.2.1 may will not work on the changes on v3.0.0.
+Be sure to check the README.md (this document). Methods from v2.2.1 may will not work on v3.0.0.
 
 ## Installing
 

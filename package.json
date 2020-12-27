@@ -28,6 +28,7 @@
     "node": ">=14.15.1"
   },
   "files": [
+    "example.js",
     "urban-dictionary.js"
   ]
 }
