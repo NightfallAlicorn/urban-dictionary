@@ -78,7 +78,7 @@ Use this to retrieve an array up to 20 search suggested strings.
 * `term` **String** The term to lookup.
 * `callback` **Function**
     * `error` **Error** if there's an error else **null**.
-    * `data` **Array of String**
+    * `results` **Array of String**
 
 *Return*
 
@@ -124,7 +124,7 @@ Use this to retrieve an array up to 20 search suggested [AutocompleteExtraObject
 * `term` **String** The term to lookup.
 * `callback` **Function**
     * `error` **Error** if there's an error else **null**.
-    * `data` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject)**
+    * `result` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject)**
 
 *Return*
 
@@ -174,7 +174,7 @@ Use this to retrieve an array up to 10 [DefinitionObject](#DefinitionObject).
 * `term` **String** The definition to lookup.
 * `callback` **Function**
     * `error` **Error** If there's an error else **null**.
-    * `definitions` **Array of [DefinitionObject](#DefinitionObject)**
+    * `results` **Array of [DefinitionObject](#DefinitionObject)**
 
 *Return*
 
@@ -187,7 +187,7 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('../urban-dictionary')
+const ud = require('urban-dictionary')
 
 // Callback
 ud.define('test', (error, results) => {
@@ -224,7 +224,7 @@ Use this to retrieve a specific [DefinitionObject](#DefinitionObject) by its def
 * `defid` **Number** The definition defid to retrieve.
 * `callback` **Function**
     * `error` **Error** if there's an error else **null**.
-    * `definition` **[DefinitionObject](#DefinitionObject)**
+    * `result` **[DefinitionObject](#DefinitionObject)**
 
 *Return*
 
@@ -273,7 +273,7 @@ Use this to retrieve an array up to 10 random [DefinitionObject](#DefinitionObje
 
 * `callback` **Function**
     * `error` **Error** If there's an error else **null**.
-    * `entry` **Array of [DefinitionObject](#DefinitionObject)**
+    * `results` **Array of [DefinitionObject](#DefinitionObject)**
 
 *Return*
 
@@ -311,6 +311,55 @@ ud.random().then((results) => {
   })
 }).catch((error) => {
   console.error(`random (promise) - error ${error.message}`)
+})
+```
+
+### wordsOfTheDay
+
+Use this to retrieve an array with 10 Words of the Day [DefinitionObject](#DefinitionObject).
+
+*Arguments*
+
+* `callback` **Function**
+    * `error` **Error** If there's an error else **null**.
+    * `results` **Array of [DefinitionObject](#DefinitionObject)**
+
+*Return*
+
+* `return` **Promise**
+    * `then` **Array of [DefinitionObject](#DefinitionObject)**
+    * `catch` **Error**
+
+E.g.
+
+```javascript
+'use strict'
+
+const ud = require('urban-dictionary')
+
+// Callback
+ud.wordsOfTheDay((error, results) => {
+  if (error) {
+    console.error(`wordsOfTheDay (callback) error - ${error.message}`)
+    return
+  }
+
+  console.log('wordsOfTheDay (callback)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+})
+
+// Promise
+ud.wordsOfTheDay().then((results) => {
+  console.log('wordsOfTheDay (promise)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+}).catch((error) => {
+  console.error(`wordsOfTheDay (promise) - error ${error.message}`)
 })
 ```
 
