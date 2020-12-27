@@ -1,14 +1,11 @@
 # urban-dictionary
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![status](https://img.shields.io/badge/status-stable-brightgreen.svg)]()
+![github](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)
+![npm](https://img.shields.io/npm/l/urban-dictionary)
+![npm](https://img.shields.io/npm/v/urban-dictionary)
+![npm](https://img.shields.io/npm/dm/urban-dictionary)
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-
-[![NPM](https://nodei.co/npm/urban-dictionary.png)](https://npmjs.org/package/urban-dictionary)
-
-
-![npm](https://img.shields.io/npm/dm/urban-dictionary)
 
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
