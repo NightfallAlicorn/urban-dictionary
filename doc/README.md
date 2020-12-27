@@ -45,6 +45,8 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards.
 * Better layout and formatting of this README.md file.
 
+Be sure to check the README.md (this document). A lot of stuff from v2.2.1 may will not work on the changes on v3.0.0.
+
 ## Installing
 
 ### Via NPM (Recommended)
@@ -87,7 +89,7 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('../urban-dictionary')
+const ud = require('urban-dictionary')
 
 // Callback
 ud.autocomplete('test', (error, results) => {
@@ -133,7 +135,7 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('../urban-dictionary')
+const ud = require('urban-dictionary')
 
 // Callback
 ud.autocompleteExtra('test', (error, results) => {
@@ -183,7 +185,7 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('../urban-dictionary')
+const ud = require('urban-dictionary')
 
 ud.define('test').then((results) => {
   console.log('define (promise)')
@@ -231,7 +233,7 @@ E.g.
 ```javascript
 'use strict'
 
-const ud = require('../urban-dictionary')
+const ud = require('urban-dictionary')
 
 // Callback
 ud.getDefinitionByDefid(217456, (error, result) => {
@@ -261,20 +263,18 @@ ud.getDefinitionByDefid(217456).then((result) => {
 
 ### random
 
-Use this to obtain a random definition.
-
-Due to the way that Urban Dictionary's API works. It will in fact retrieve 10 definitions at once. This action will store all 10 in a cache on first use and provide them 1 at a time on each use. Each entry that gets provided gets removed from the cache. Once all the entries have been provided, it will retrieve another 10 once the cache is empty. Until all the entries have been provided, all the definitions that are currently stored in the cache are provided first.
+Use this to retrieve an array up to 10 random [DefinitionObject](#DefinitionObject).
 
 *Arguments*
 
 * `callback` **Function**
     * `error` **Error** If there's an error else **null**.
-    * `entry` **[Definition Object](#definition-object)**
+    * `entry` **Array of [DefinitionObject](#DefinitionObject)**
 
 *Return*
 
 * `return` **Promise**
-    * `then` **[Definition Object](#definition-object)**
+    * `then` **Array of [DefinitionObject](#DefinitionObject)**
     * `catch` **Error**
 
 E.g.
@@ -284,24 +284,29 @@ E.g.
 
 const ud = require('urban-dictionary')
 
-// Callback example.
-ud.random((error, entry) => {
+// Callback
+ud.random((error, results) => {
   if (error) {
-    console.error(error.message)
-  } else {
-    console.log(entry.word)
-    console.log(entry.definition)
-    console.log(entry.example)
+    console.error(`random (callback) error - ${error.message}`)
+    return
   }
+
+  console.log('random (callback)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
 })
 
-// Promise example.
-ud.random().then((result) => {
-  console.log(result.word)
-  console.log(result.definition)
-  console.log(result.example)
+// Promise
+ud.random().then((results) => {
+  console.log('random (promise)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
 }).catch((error) => {
-  console.error(error.message)
+  console.error(`random (promise) - error ${error.message}`)
 })
 ```
 
