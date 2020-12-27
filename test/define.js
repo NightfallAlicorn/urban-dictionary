@@ -2,16 +2,7 @@
 
 const ud = require('../urban-dictionary')
 
-ud.define('test').then((results) => {
-  console.log('define (promise)')
-
-  Object.entries(results[0]).forEach(([key, prop]) => {
-    console.log(`${key}: ${prop}`)
-  })
-}).catch((error) => {
-  console.error(`define (promise) - error ${error.message}`)
-})
-
+// Callback
 ud.define('test', (error, results) => {
   if (error) {
     console.error(`define (callback) error - ${error.message}`)
@@ -23,4 +14,15 @@ ud.define('test', (error, results) => {
   Object.entries(results[0]).forEach(([key, prop]) => {
     console.log(`${key}: ${prop}`)
   })
+})
+
+// Promise
+ud.define('test').then((results) => {
+  console.log('define (promise)')
+
+  Object.entries(results[0]).forEach(([key, prop]) => {
+    console.log(`${key}: ${prop}`)
+  })
+}).catch((error) => {
+  console.error(`define (promise) - error ${error.message}`)
 })
