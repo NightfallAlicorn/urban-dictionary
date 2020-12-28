@@ -42,7 +42,7 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * The code has been updated to reflect on [StandardJS](https://standardjs.com/) new standards.
 * Better layout and formatting of this README.md file.
 * Included [example.js](example.js) to be included in the npm package.
-* For developers. I've removed debug.js and separated the methods into separated js files under [./test](./test) for easier debugging.
+* For developers. I've removed debug.js and split the methods into separate js files under [./test](./test) for easier debugging.
 
 Be sure to check the README.md (this document). Methods from v2.2.1 may will not work on v3.0.0.
 
