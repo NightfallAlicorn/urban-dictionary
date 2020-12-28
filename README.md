@@ -1,13 +1,13 @@
 # urban-dictionary
 
 <a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="100" align="right"></a>
-<!-- text-align: right; doesn't seem to work so align="right" is used instead -->
+<!-- `text-align: right;` doesn't seem to work. So `align="right"` is used instead. -->
 
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![github-issue](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)](https://github.com/NightfallAlicorn/urban-dictionary/issues)
 [![npm-license](https://img.shields.io/npm/l/urban-dictionary)](LICENSE)
-![npm-version](https://img.shields.io/npm/v/urban-dictionary)
-![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)
+[![npm-version](https://img.shields.io/npm/v/urban-dictionary)](https://www.npmjs.com/package/urban-dictionary)
+[![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)](https://www.npmjs.com/package/urban-dictionary)
 
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
@@ -29,7 +29,7 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 
 **v3.0.0**
 
-* Rewritten the module with more ES6 features.
+* Rewritten the module with ES6 features.
 * Module size has been reduced slightly.
 * New methods have been added with the help from [this](https://github.com/NightfallAlicorn/urban-dictionary/issues/8) posted issue.
   * [autocompleteExtra](#autocompleteExtra) 
@@ -39,8 +39,10 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * The following methods have been renamed for clarity.
   * `defid` to [getDefinitionByDefid](#getDefinitionByDefid)
   * `term` to [define](#define)
-* The code has been updated to reflect on [StandardJS](https://standardjs.com/) new coding standards.
+* The code has been updated to reflect on [StandardJS](https://standardjs.com/) new standards.
 * Better layout and formatting of this README.md file.
+* Included [example.js](example.js) to be included in the npm package.
+* For developers. I've removed debug.js and separated the methods into separated js files under [./test](./test) for easier debugging.
 
 Be sure to check the README.md (this document). Methods from v2.2.1 may will not work on v3.0.0.
 
