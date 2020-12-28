@@ -367,7 +367,7 @@ ud.wordsOfTheDay().then((results) => {
 * Q: Where did you get the URL to access Urban Dictionary's API? They hadn't got a documented page.
     * A: I just found them floating around on the web years ago. I don't have a source, sorry.
 * Q: Are there any more methods?
-    * A: These are the only URLs methods that I'm aware of: [test/urls.txt](test/urls.txt).
+    * A: These are the only URL methods that I'm aware of: [test/urls.txt](test/urls.txt).
 * Q: If they haven't documented it. Are we even allowed to use their site API?
     * A: I don't really know the answer. However, sites nowadays use an authorization name and password in the URL queries to restrict their API access to certain individuals. If Urban Dictionary didn't want others using it, they would had done so by now. In short: As long as we don't abuse the API to spam requests, we should be fine.
 * Q: Why use StandardJS coding style?
