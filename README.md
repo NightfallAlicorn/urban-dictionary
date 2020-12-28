@@ -388,7 +388,7 @@ ud.wordsOfTheDay().then((results) => {
 
 ### DefinitionObject
 
-**Be aware that the `date` property is only available for the `wordsOfTheDay` method.**
+**Be aware that the `date` property is only available for the [wordsOfTheDay](#wordsOfTheDay) method.**
 
 | Name         | Type   | Explanation                                                                                     |
 | :-           | :-     | :-                                                                                              |
