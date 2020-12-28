@@ -137,33 +137,6 @@ promises.wordsOfTheDay = async () => {
 }
 
 // Create callback versions of the promise methods
-/*
-Object.keys(promises).forEach((property) => {
-  callbacks[property] = utilities.callbackify(promises[property])
-})
-
-methods.defid = (id, callback) => { return (!callback ? promises.defid(id) : callbacks.defid(id, callback)) }
-methods.random = (callback) => { return (!callback ? promises.random() : callbacks.random(callback)) }
-methods.term = (word, callback) => { return (!callback ? promises.term(word) : callbacks.term(word, callback)) }
-*/
-
-/*
-Object.keys(promises).forEach((property) => {
-  // Create callbackify variations of the async function promises.
-  callbacks[property] = utilities.callbackify(promises[property])
-
-  // Create the public methods control flow for the callbacks and promises while forwarding the arguments.
-  methods[property] = (...args) => {
-    if (typeof args[args.length - 1] === 'function') {
-      return callbacks[property](...args)
-    } else {
-      return promises[property](...args)
-    }
-  }
-})
-*/
-
-// Create callback versions of the promise methods
 Object.keys(promises).forEach((property) => {
   callbacks[property] = utilities.callbackify(promises[property])
 })
@@ -182,7 +155,7 @@ Object.keys(promises).forEach((property) => {
  * @property {number} thumbs_up
  * @property {string} word
  * @property {string} written_on
- * @param {DefinitionObject} definitions
+ * @param {DefinitionObject}
  */
 
 /**

@@ -42,7 +42,10 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 * The code has been updated to reflect on [StandardJS](https://standardjs.com/) new standards.
 * Better layout and formatting of this README.md file.
 * Included [example.js](example.js) to be included in the npm package.
-* For developers. I've removed debug.js and split the methods into separate js files under [./test](./test) for easier debugging. I've also included a [urls.txt](./test/urls.txt) file there for a list of known Urban URLs.
+* For developers of this module.
+  * I've removed `debug.js` and split the methods into separate .js files under [./test](./test) for easier debugging.
+  * I've included a [urls.txt](./test/urls.txt) file under [./test](./test) for a list of known Urban URLs.
+  * I've added some vscode automated project rules to make sure the tab spaces are correct.
 
 Be sure to check the README.md (this document). Methods from v2.2.1 may will not work on v3.0.0.
 
