@@ -81,7 +81,7 @@ Use this to retrieve an array up to 20 search suggested strings.
 
 *Return*
 
-* `return` **Promise**
+* `return` **Promise** if no **Function** is provided for `callback`.
     * `then` **Array of String**
     * `catch` **Error**
 
@@ -127,7 +127,7 @@ Use this to retrieve an array up to 20 search suggested [AutocompleteExtraObject
 
 *Return*
 
-* `return` **Promise**
+* `return` **Promise** if no **Function** is provided for `callback`.
     * `then` **Array of [AutocompleteExtraObject](#AutocompleteExtraObject)**
     * `catch` **Error**
 
@@ -177,7 +177,7 @@ Use this to retrieve an array up to 10 [DefinitionObject](#DefinitionObject).
 
 *Return*
 
-* `return` **Promise**
+* `return` **Promise** if no **Function** is provided for `callback`.
     * `then` **Array of [DefinitionObject](#DefinitionObject)**
     * `catch` **Error**
 
@@ -227,7 +227,7 @@ Use this to retrieve a specific [DefinitionObject](#DefinitionObject) by its def
 
 *Return*
 
-* `return` **Promise**
+* `return` **Promise** if no **Function** is provided for `callback`.
     * `then` **[DefinitionObject](#DefinitionObject)**
     * `catch` **Error**
 
@@ -276,7 +276,7 @@ Use this to retrieve an array up to 10 random [DefinitionObject](#DefinitionObje
 
 *Return*
 
-* `return` **Promise**
+* `return` **Promise** if no **Function** is provided for `callback`.
     * `then` **Array of [DefinitionObject](#DefinitionObject)**
     * `catch` **Error**
 
@@ -325,7 +325,7 @@ Use this to retrieve an array with 10 Words of the Day [DefinitionObject](#Defin
 
 *Return*
 
-* `return` **Promise**
+* `return` **Promise** if no **Function** is provided for `callback`.
     * `then` **Array of [DefinitionObject](#DefinitionObject)**
     * `catch` **Error**
 
