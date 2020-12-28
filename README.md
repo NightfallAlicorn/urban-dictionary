@@ -402,5 +402,5 @@ ud.wordsOfTheDay().then((results) => {
 | sound_urls   | Array  | Presumably an Array of Strings containing URLs. I hadn't seen any results with any data though. |
 | thumbs_down  | Number | The number of declined votes for the definition.                                                |
 | thumbs_up    | Number | The number of accepted votes for the definition.                                                |
-| word         | String | Word used to find this definition.                                                              |
+| word         | String | The term used to find this definition.                                                              |
 | written_on   | String | The date the definition was posted. Format: "[YYYY]-[MM]-[DD]T[HH]:[MM]:[SS].[MMM][Z]"          |
