@@ -5,7 +5,7 @@
 
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![github-issue](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)](https://github.com/NightfallAlicorn/urban-dictionary/issues)
-![npm-license](https://img.shields.io/npm/l/urban-dictionary)
+[![npm-license](https://img.shields.io/npm/l/urban-dictionary)](LICENSE)
 ![npm-version](https://img.shields.io/npm/v/urban-dictionary)
 ![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)
 
