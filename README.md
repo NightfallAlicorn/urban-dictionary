@@ -29,7 +29,7 @@ Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) 
 
 **v3.0.0**
 
-* Rewritten the module with ES6 features.
+* Module rewritten with more up-to-date ES6 features.
 * Module size has been reduced slightly.
 * New methods have been added with the help from [this](https://github.com/NightfallAlicorn/urban-dictionary/issues/8) posted issue.
   * [autocompleteExtra](#autocompleteExtra) 
