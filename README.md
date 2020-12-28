@@ -1,13 +1,12 @@
 # urban-dictionary
 
-<a href="https://standardjs.com" style="float: right; padding: 0 0 20px 20px;"><img src="https://cdn.rawgit.com/feross/standard/master/sticker.svg" alt="JavaScript Standard Style" width="100" align="right"></a>
-<!-- `text-align: right;` doesn't seem to work. So `align="right"` is used instead. -->
-
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![github-issue](https://img.shields.io/github/issues/NightfallAlicorn/urban-dictionary)](https://github.com/NightfallAlicorn/urban-dictionary/issues)
 [![npm-license](https://img.shields.io/npm/l/urban-dictionary)](LICENSE)
 [![npm-version](https://img.shields.io/npm/v/urban-dictionary)](https://www.npmjs.com/package/urban-dictionary)
 [![npm-downloads](https://img.shields.io/npm/dm/urban-dictionary)](https://www.npmjs.com/package/urban-dictionary)
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 Badges from: [NodeICO](https://nodei.co), [standard JS](https://standardjs.com) and [Shields IO](http://shields.io)
 
