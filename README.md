@@ -60,7 +60,7 @@ Local Uninstall `npm uninstall urban-dictionary`
 
 Global Uninstall `npm uninstall urban-dictionary -g`
 
-If you're installing locally. Be sure to run `npm init` in the top directory of the project.
+If you're installing locally. Be sure to run `npm init` in the top directory of the project to avoid issues.
 
 ### Via Downloadable Zip
 
