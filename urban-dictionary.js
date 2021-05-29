@@ -51,7 +51,7 @@ const get = (pathname, query) => {
 }
 
 const noResults = () => {
-  return new Error('No results founds.')
+  return new Error('No results found.')
 }
 
 promises.autocompleteExtra = async (term) => {
